@@ -15,3 +15,5 @@ vue.js实现商城
   2. [配置postcss](.postcssrc.js)
 
   3. 添加buggyfill
+
+  4. 引入初始化css
