@@ -16,4 +16,8 @@ vue.js实现商城
 
   3. 添加buggyfill
 
-  4. 引入初始化css
+  4. [引入初始化css](https://github.com/HaitaoWang555/vue_shop/commit/b2add429932117450b961e2b99cf72ec379d2ed5)
+
+三. 完成登录页面
+
+  1. [完成登录页路由](https://github.com/HaitaoWang555/vue_shop/commit/2e74ce5349a76874b8da6379db66bd51a270f926)点击vue图标进入登录页
