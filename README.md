@@ -5,7 +5,7 @@ vue.js实现商城
 
 ![vue-cli配置](readmeImages/1.jpg)
 
-二. [移动端适配方案]()&&[方案地址](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
+二. [移动端适配方案](https://github.com/HaitaoWang555/vue_shop/commit/39c7999332b1bd0b906a27d2b0ec5dad799f1e69)&&[方案地址](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
 
   1. 安装插件
   ```
