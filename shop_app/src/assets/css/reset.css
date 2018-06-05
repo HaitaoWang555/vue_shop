@@ -1,11 +1,18 @@
+* {margin: 0;padding: 0;}
+ul,li {list-style: none;}
 input {
   border: 0;
   outline: none;
   padding: 16px 0;
 }
 
+placeholder{
+  color:#9b9b9b;font-weight:normal
+}
+
 a, a:hover {
   text-decoration: none;
+  color: inherit;
 }
 
 fieldset {
