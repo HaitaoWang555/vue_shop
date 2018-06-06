@@ -22,3 +22,4 @@ vue.js实现商城
 
   1. [完成登录页路由](https://github.com/HaitaoWang555/vue_shop/commit/2e74ce5349a76874b8da6379db66bd51a270f926)点击vue图标进入登录页
   2. [完成登录页样式](https://github.com/HaitaoWang555/vue_shop/commit/fad343747a76f64ca263e46387b356065ac33a77)
+  3. [切换登录方式完成](https://github.com/HaitaoWang555/vue_shop/commit/5b0ec0d8017e50c76766407474c834f93963d7d3)
