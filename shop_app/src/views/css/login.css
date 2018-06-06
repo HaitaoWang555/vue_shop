@@ -55,6 +55,7 @@ section {
   border-radius: 6px;
   display: block;
   text-align: center;
+  border: 1px solid #d3d3d3;
 }
 #loginBtn {
   border-bottom: none;

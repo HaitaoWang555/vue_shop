@@ -13,7 +13,7 @@
       </form>
     </section>
     <section class="otherPanel">
-      <div class="changeLogin"><input type="text" class="commonBtn" value="手机短信登录/注册"></div>
+      <div class="changeLogin"><p @click="changeLogin" class="commonBtn">{{subBtn}}</p></div>
       <div class="reverse"><a href=""><span>立即注册</span></a> | <a href=""><span>忘记密码</span></a></div>
       <div class="otherLogin">
         <h4>其它方式登录</h4>
@@ -32,19 +32,24 @@
 
 <script>
 export default {
-  name: 'page',
-  props: {
-
+  data () {
+    return {
+      isIdLogin: true
+    }
+  },
+  computed: {
+    subBtn () {
+      return this.isIdLogin ? '用户名密码登录' : '手机短信登录/注册'
+    }
   },
   methods: {
-
-  },
-  components: {
-
+    changeLogin () {
+      this.isIdLogin = !this.isIdLogin
+    }
   }
 }
 </script>
 
 <style scoped>
-  @import './css/login.css';
+@import "./css/login.css";
 </style>
