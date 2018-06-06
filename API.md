@@ -37,3 +37,13 @@ data () {
 }
 ```
 根据表达式之真假值，切换元素的 display CSS 属性。
+```
+<input type="text" name="user" id="username" :placeholder="placeholderTxt">
+
+...
+
+placeholderTxt () {
+  return this.isIdLogin ? '邮箱/手机号码/小米ID' : '手机号码'
+},
+```
+使用 :placeholder 来动态修改 input 的 placeholder

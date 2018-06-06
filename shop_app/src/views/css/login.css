@@ -25,14 +25,58 @@ section {
   display: flex;
   border-bottom: 1px solid #d3d3d3;
 }
+.country_list {
+  padding: 15px 0;
+  color: #4a4a4a;
+  display: block;
+  position: relative;
+  animation: fade-in ease .4s;
+}
+@keyframes fade-in {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+.country_code {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
+}
+.countrycode-value {
+  color: #9b9b9b;
+  font-size: 20px;
+  font-weight: bold;
+}
+.icon_arrow_down {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent transparent #9b9b9b #9b9b9b;
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
 .loginForm input{
   width: 100%;
   display: block;
+  transition: width 1s;
 }
 .forPassword {
   display: flex;
   align-items: center;
   margin-top: 4px;
+}
+.code_panel {
+  min-width: 80px;
+  padding: 10px 15px;
+}
+.code_panel a{
+  color: #2ea5e5;
+  font-size: 14px;
 }
 .errorInfo {
   color: #F66;
