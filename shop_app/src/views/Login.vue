@@ -9,7 +9,7 @@
         <label for="user" class="forUser"><input type="text" name="user" id="username" placeholder="邮箱/手机号码/小米ID"></label>
         <label for="password" class="forPassword"><input type="password" name="password" id="passoord" placeholder="密码"><div class="visible"><i class="icon iconfont icon-kanjianmima-"></i></div></label>
         <div v-show="isError" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">请输入帐号</span></div></div>
-        <div class="btnWrap"><input type="submit" id="loginBtn" class="commonBtn" value="登录"></div>
+        <div class="btnWrap"><p id="loginBtn" class="commonBtn">{{codeMsg}}</p></div>
       </form>
     </section>
     <section class="otherPanel">
@@ -41,6 +41,9 @@ export default {
   computed: {
     subBtn () {
       return this.isIdLogin ? '用户名密码登录' : '手机短信登录/注册'
+    },
+    codeMsg () {
+      return this.isIdLogin ? '登录' : '立即登录/注册'
     }
   },
   methods: {
