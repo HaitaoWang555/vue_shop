@@ -25,3 +25,15 @@ methods: {
 }
 ```
 methods 将被混入到 Vue 实例中。可以直接通过 VM 实例访问这些方法，或者在指令表达式中使用。方法中的 this 自动绑定为 Vue 实例
+```
+<div v-show="isError" class="errorInfo"></div>
+
+...
+
+data () {
+  return {
+    isError: false
+  }
+}
+```
+根据表达式之真假值，切换元素的 display CSS 属性。
