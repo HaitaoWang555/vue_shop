@@ -47,3 +47,9 @@ placeholderTxt () {
 },
 ```
 使用 :placeholder 来动态修改 input 的 placeholder 等同于 v-bind:placeholder .v-bind 动态地绑定一个或多个特性，或一个组件 prop 到表达式
+
+```
+<input v-model="message" placeholder="edit me" @input="clearError">
+<p>Message is: {{ message }}</p>
+```
+v-model 指令在表单 input 及 textarea 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素 @input 监听input
