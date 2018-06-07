@@ -8,15 +8,15 @@
       <form action="">
         <label for="user" class="forUser">
           <div v-show="!isIdLogin" class="country_list"><span class="country_code"><tt class="countrycode-value">+86</tt><i class="icon_arrow_down"></i></span></div>
-          <input type="text" name="user" id="username" :placeholder="placeholderTxt">
+          <input type="text" name="user" id="username" v-model="userName" :placeholder="placeholderTxt" @input="clearError">
         </label>
         <label for="password" class="forPassword">
-          <input v-show="isIdLogin" :type="pwdType" name="password" id="passoord" placeholder="密码">
+          <input v-show="isIdLogin" :type="pwdType" name="password" id="passoord" placeholder="密码" v-model="password">
           <input v-show="!isIdLogin"  type="number" name="smCode" id="smCode" placeholder="短信验证码">
           <div v-show="isIdLogin" @click="changeHide" class="visible"><i v-show="isHide" class="icon iconfont icon-kanjianmima-"></i><i v-show="!isHide" class="icon iconfont icon-biyan"></i></div>
           <div v-show="!isIdLogin" id="codePanel" class="code_panel"><a href="javascript:;" :style="codeStyle" @click="getCode" id="getSMSCode">{{codeMsg}}</a></div>
         </label>
-        <div v-show="isError" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">请输入帐号</span></div></div>
+        <div v-show="isError" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">{{errorMsg}}</span></div></div>
         <div class="btnWrap"><p id="loginBtn" class="commonBtn">{{loginBtn}}</p></div>
       </form>
     </section>
@@ -47,7 +47,10 @@ export default {
       isHide: true,
       countdown: 60,
       timer: null,
-      codeMsg: '获取验证码'
+      codeMsg: '获取验证码',
+      userName: '',
+      password: '',
+      errorMsg: ''
     }
   },
   computed: {
@@ -79,6 +82,16 @@ export default {
       this.isHide = !this.isHide
     },
     getCode () {
+      let isClicked = true
+      if (!isClicked) {
+        return
+      }
+      isClicked = false
+      if (this.userName === '') {
+        this.isError = true
+        this.errorMsg = '请输入手机号码'
+        return
+      }
       this.timer = setInterval(() => {
         this.countdown--
         this.codeMsg = `重新发送${this.countdown}`
@@ -87,8 +100,12 @@ export default {
           this.timer = null
           this.countdown = 60
           this.codeMsg = '获取验证码'
+          isClicked = true
         }
       }, 1000)
+    },
+    clearError () {
+      this.isError = false
     }
   }
 }
