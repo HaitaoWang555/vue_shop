@@ -49,7 +49,8 @@ export default {
       codeMsg: '获取验证码',
       userName: '',
       password: '',
-      errorMsg: ''
+      errorMsg: '',
+      isClicked: true
     }
   },
   computed: {
@@ -81,11 +82,10 @@ export default {
       this.isHide = !this.isHide
     },
     getCode () {
-      let isClicked = true
-      if (!isClicked) {
+      if (!this.isClicked) {
         return
       }
-      isClicked = false
+      this.isClicked = false
       if (this.userName === '') {
         this.errorMsg = '请输入手机号码'
         return
@@ -98,7 +98,7 @@ export default {
           this.timer = null
           this.countdown = 60
           this.codeMsg = '获取验证码'
-          isClicked = true
+          this.isClicked = true
         }
       }, 1000)
     },
