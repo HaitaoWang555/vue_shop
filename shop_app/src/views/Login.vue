@@ -84,6 +84,7 @@ export default {
       this.isIdLogin = !this.isIdLogin
       this.userName = ''
       this.errorMsg = ''
+      this.password = ''
     },
     changeHide () {
       this.isHide = !this.isHide
@@ -92,6 +93,9 @@ export default {
       if (!this.isClicked) return
       if (!this.userName) {
         this.errorMsg = '请输入手机号码'
+        return
+      } else if (!this.checkMobile()) {
+        this.errorMsg = '手机号格式不正确'
         return
       }
       this.isClicked = false
