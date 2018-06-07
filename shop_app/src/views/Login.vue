@@ -14,10 +14,10 @@
           <input v-show="isIdLogin" :type="pwdType" name="password" id="passoord" placeholder="密码">
           <input v-show="!isIdLogin"  type="number" name="smCode" id="smCode" placeholder="短信验证码">
           <div v-show="isIdLogin" @click="changeHide" class="visible"><i v-show="isHide" class="icon iconfont icon-kanjianmima-"></i><i v-show="!isHide" class="icon iconfont icon-biyan"></i></div>
-          <div v-show="!isIdLogin" id="codePanel" class="code_panel"><a href="javascript:;" id="getSMSCode">获取验证码</a></div>
+          <div v-show="!isIdLogin" id="codePanel" class="code_panel"><a href="javascript:;" :style="codeStyle" @click="getCode" id="getSMSCode">{{codeMsg}}</a></div>
         </label>
         <div v-show="isError" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">请输入帐号</span></div></div>
-        <div class="btnWrap"><p id="loginBtn" class="commonBtn">{{codeMsg}}</p></div>
+        <div class="btnWrap"><p id="loginBtn" class="commonBtn">{{loginBtn}}</p></div>
       </form>
     </section>
     <section class="otherPanel">
@@ -44,14 +44,17 @@ export default {
     return {
       isIdLogin: true,
       isError: false,
-      isHide: true
+      isHide: true,
+      countdown: 60,
+      timer: null,
+      codeMsg: '获取验证码'
     }
   },
   computed: {
     subBtn () {
       return this.isIdLogin ? '手机短信登录/注册' : '用户名密码登录'
     },
-    codeMsg () {
+    loginBtn () {
       return this.isIdLogin ? '登录' : '立即登录/注册'
     },
     placeholderTxt () {
@@ -59,6 +62,13 @@ export default {
     },
     pwdType () {
       return this.isHide ? 'password' : 'text'
+    },
+    codeStyle () {
+      return this.countdown === 60 ? {
+        color: '#2ea5e5'
+      } : {
+        color: '#999'
+      }
     }
   },
   methods: {
@@ -67,6 +77,18 @@ export default {
     },
     changeHide () {
       this.isHide = !this.isHide
+    },
+    getCode () {
+      this.timer = setInterval(() => {
+        this.countdown--
+        this.codeMsg = `重新发送${this.countdown}`
+        if (this.countdown === 0) {
+          clearInterval(this.timer)
+          this.timer = null
+          this.countdown = 60
+          this.codeMsg = '获取验证码'
+        }
+      }, 1000)
     }
   }
 }
