@@ -16,7 +16,7 @@
           <div v-show="isIdLogin" @click="changeHide" class="visible"><i v-show="isHide" class="icon iconfont icon-kanjianmima-"></i><i v-show="!isHide" class="icon iconfont icon-biyan"></i></div>
           <div v-show="!isIdLogin" id="codePanel" class="code_panel"><a href="javascript:;" :style="codeStyle" @click="getCode" id="getSMSCode">{{codeMsg}}</a></div>
         </label>
-        <div v-show="isError" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">{{errorMsg}}</span></div></div>
+        <div v-show="errorMsg" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">{{errorMsg}}</span></div></div>
         <div class="btnWrap"><p id="loginBtn" class="commonBtn">{{loginBtn}}</p></div>
       </form>
     </section>
@@ -43,7 +43,6 @@ export default {
   data () {
     return {
       isIdLogin: true,
-      isError: false,
       isHide: true,
       countdown: 60,
       timer: null,
@@ -88,7 +87,6 @@ export default {
       }
       isClicked = false
       if (this.userName === '') {
-        this.isError = true
         this.errorMsg = '请输入手机号码'
         return
       }
@@ -105,7 +103,7 @@ export default {
       }, 1000)
     },
     clearError () {
-      this.isError = false
+      this.errorMsg = ''
     }
   }
 }
