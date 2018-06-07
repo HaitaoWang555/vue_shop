@@ -8,16 +8,16 @@
       <form action="">
         <label for="user" class="forUser">
           <div v-show="!isIdLogin" class="country_list"><span class="country_code"><tt class="countrycode-value">+86</tt><i class="icon_arrow_down"></i></span></div>
-          <input type="text" name="user" id="username" v-model="userName" :placeholder="placeholderTxt" @input="clearError">
+          <input :type="inputType" name="user" id="username" v-model="userName" :placeholder="placeholderTxt" @input="clearError">
         </label>
         <label for="password" class="forPassword">
-          <input v-show="isIdLogin" :type="pwdType" name="password" id="passoord" placeholder="密码" v-model="password">
-          <input v-show="!isIdLogin"  type="number" name="smCode" id="smCode" placeholder="短信验证码">
+          <input v-show="isIdLogin" :type="pwdType" name="password" id="passoord" placeholder="密码" v-model="password" @input="clearError">
+          <input v-show="!isIdLogin"  type="number" name="smCode" id="smCode" placeholder="短信验证码" v-model="smCode" @input="clearError">
           <div v-show="isIdLogin" @click="changeHide" class="visible"><i v-show="isHide" class="icon iconfont icon-kanjianmima-"></i><i v-show="!isHide" class="icon iconfont icon-biyan"></i></div>
           <div v-show="!isIdLogin" id="codePanel" class="code_panel"><a href="javascript:;" :style="codeStyle" @click="getCode" id="getSMSCode">{{codeMsg}}</a></div>
         </label>
         <div v-show="errorMsg" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">{{errorMsg}}</span></div></div>
-        <div class="btnWrap"><p id="loginBtn" class="commonBtn">{{loginBtn}}</p></div>
+        <div class="btnWrap"><p id="loginBtn" @click="submitForm" class="commonBtn">{{loginBtn}}</p></div>
       </form>
     </section>
     <section class="otherPanel">
@@ -49,6 +49,7 @@ export default {
       codeMsg: '获取验证码',
       userName: '',
       password: '',
+      smCode: '',
       errorMsg: '',
       isClicked: true
     }
@@ -59,6 +60,9 @@ export default {
     },
     loginBtn () {
       return this.isIdLogin ? '登录' : '立即登录/注册'
+    },
+    inputType () {
+      return this.isIdLogin ? 'text' : 'number'
     },
     placeholderTxt () {
       return this.isIdLogin ? '邮箱/手机号码/小米ID' : '手机号码'
@@ -77,6 +81,8 @@ export default {
   methods: {
     changeLogin () {
       this.isIdLogin = !this.isIdLogin
+      this.userName = ''
+      this.errorMsg = ''
     },
     changeHide () {
       this.isHide = !this.isHide
@@ -86,7 +92,7 @@ export default {
         return
       }
       this.isClicked = false
-      if (this.userName === '') {
+      if (!this.userName) {
         this.errorMsg = '请输入手机号码'
         return
       }
@@ -104,6 +110,34 @@ export default {
     },
     clearError () {
       this.errorMsg = ''
+    },
+    checkMobile () {
+      const reg = /^((1[3-8][0-9])+\d{8})$/
+      return reg.test(this.userName)
+    },
+    submitForm () {
+      // 不同登录方式
+      if (this.isIdLogin) {
+        // 用户名登录
+        if (!this.userName) {
+          this.errorMsg = '请输入账号'
+        } else if (!this.password) {
+          this.errorMsg = '请输入密码'
+        } else {
+          console.log('用户名登录')
+        }
+      } else {
+        // 手机号登录
+        if (!this.userName) {
+          this.errorMsg = '请输入手机号码'
+        } else if (!this.checkMobile()) {
+          this.errorMsg = '手机号格式不正确'
+        } else if (!this.smCode) {
+          this.errorMsg = '请输入短信验证码'
+        } else {
+          console.log('手机号登录')
+        }
+      }
     }
   }
 }
