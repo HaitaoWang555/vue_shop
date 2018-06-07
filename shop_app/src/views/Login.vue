@@ -17,7 +17,7 @@
           <div v-show="!isIdLogin" id="codePanel" class="code_panel"><a href="javascript:;" :style="codeStyle" @click="getCode" id="getSMSCode">{{codeMsg}}</a></div>
         </label>
         <div v-show="errorMsg" class="errorInfo"><div><i class="icon iconfont icon-error"></i><span class="error-con">{{errorMsg}}</span></div></div>
-        <div class="btnWrap"><p id="loginBtn" @click="submitForm" class="commonBtn">{{loginBtn}}</p></div>
+        <div class="btnWrap"><p id="loginBtn" v-show="!loginLoading" @click="submitForm" class="commonBtn">{{loginBtn}}</p><p v-show="loginLoading" class="commonBtn loading">登录中...</p></div>
       </form>
     </section>
     <section class="otherPanel">
@@ -51,7 +51,8 @@ export default {
       password: '',
       smCode: '',
       errorMsg: '',
-      isClicked: true
+      isClicked: true,
+      loginLoading: false
     }
   },
   computed: {
@@ -88,14 +89,12 @@ export default {
       this.isHide = !this.isHide
     },
     getCode () {
-      if (!this.isClicked) {
-        return
-      }
-      this.isClicked = false
+      if (!this.isClicked) return
       if (!this.userName) {
         this.errorMsg = '请输入手机号码'
         return
       }
+      this.isClicked = false
       this.timer = setInterval(() => {
         this.countdown--
         this.codeMsg = `重新发送${this.countdown}`
@@ -115,7 +114,17 @@ export default {
       const reg = /^((1[3-8][0-9])+\d{8})$/
       return reg.test(this.userName)
     },
+    formSuccess () {
+      this.isClicked = false
+      this.loginLoading = true
+      setTimeout(() => {
+        this.loginLoading = false
+        this.isClicked = true
+        console.log('用户名登录')
+      }, 1000)
+    },
     submitForm () {
+      if (!this.isClicked) return
       // 不同登录方式
       if (this.isIdLogin) {
         // 用户名登录
@@ -124,7 +133,7 @@ export default {
         } else if (!this.password) {
           this.errorMsg = '请输入密码'
         } else {
-          console.log('用户名登录')
+          this.formSuccess()
         }
       } else {
         // 手机号登录
@@ -135,7 +144,7 @@ export default {
         } else if (!this.smCode) {
           this.errorMsg = '请输入短信验证码'
         } else {
-          console.log('手机号登录')
+          this.formSuccess()
         }
       }
     }
