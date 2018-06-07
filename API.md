@@ -46,4 +46,4 @@ placeholderTxt () {
   return this.isIdLogin ? '邮箱/手机号码/小米ID' : '手机号码'
 },
 ```
-使用 :placeholder 来动态修改 input 的 placeholder
+使用 :placeholder 来动态修改 input 的 placeholder 等同于 v-bind:placeholder .v-bind 动态地绑定一个或多个特性，或一个组件 prop 到表达式
