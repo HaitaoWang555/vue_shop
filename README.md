@@ -14,7 +14,7 @@ vue.js实现商城
   
   2. [配置postcss](.postcssrc.js)
 
-  3. 添加buggyfill
+  3. [添加buggyfill](https://github.com/HaitaoWang555/vue_shop/blob/39c7999332b1bd0b906a27d2b0ec5dad799f1e69/shop_app/public/index.html)
 
   4. [引入初始化css](https://github.com/HaitaoWang555/vue_shop/commit/b2add429932117450b961e2b99cf72ec379d2ed5)
 
@@ -23,3 +23,6 @@ vue.js实现商城
   1. [完成登录页路由](https://github.com/HaitaoWang555/vue_shop/commit/2e74ce5349a76874b8da6379db66bd51a270f926)点击vue图标进入登录页
   2. [完成登录页样式](https://github.com/HaitaoWang555/vue_shop/commit/fad343747a76f64ca263e46387b356065ac33a77)
   3. [切换登录方式完成](https://github.com/HaitaoWang555/vue_shop/commit/5b0ec0d8017e50c76766407474c834f93963d7d3)
+  4. [登录页完成](https://github.com/HaitaoWang555/vue_shop/commit/0a603f6b416d4630d966d365c1ee26ffe0a57055)效果如下
+
+  ![登录页效果图](readmeImages/login.gif)
