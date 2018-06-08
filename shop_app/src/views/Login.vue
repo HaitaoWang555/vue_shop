@@ -52,6 +52,7 @@ export default {
       smCode: '',
       errorMsg: '',
       isClicked: true,
+      isGetCodeClicked: true,
       loginLoading: false
     }
   },
@@ -90,7 +91,7 @@ export default {
       this.isHide = !this.isHide
     },
     getCode () {
-      if (!this.isClicked) return
+      if (!this.isGetCodeClicked) return
       if (!this.userName) {
         this.errorMsg = '请输入手机号码'
         return
@@ -98,7 +99,7 @@ export default {
         this.errorMsg = '手机号格式不正确'
         return
       }
-      this.isClicked = false
+      this.isGetCodeClicked = false
       this.timer = setInterval(() => {
         this.countdown--
         this.codeMsg = `重新发送${this.countdown}`
@@ -107,7 +108,7 @@ export default {
           this.timer = null
           this.countdown = 60
           this.codeMsg = '获取验证码'
-          this.isClicked = true
+          this.isGetCodeClicked = true
         }
       }, 1000)
     },
@@ -124,7 +125,7 @@ export default {
       setTimeout(() => {
         this.loginLoading = false
         this.isClicked = true
-        console.log('用户名登录')
+        console.log('登录成功')
       }, 1000)
     },
     submitForm () {
