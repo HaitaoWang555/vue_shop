@@ -53,3 +53,10 @@ placeholderTxt () {
 <p>Message is: {{ message }}</p>
 ```
 v-model 指令在表单 input 及 textarea 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素 @input 监听input
+
+```
+create () {
+  this.getNavList()
+}
+```
+在实例创建完成后被立即调用
