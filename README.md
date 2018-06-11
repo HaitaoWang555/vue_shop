@@ -26,3 +26,5 @@ vue.js实现商城
   4. [登录页完成](https://github.com/HaitaoWang555/vue_shop/commit/0a603f6b416d4630d966d365c1ee26ffe0a57055)效果如下
 
   ![登录页效果图](readmeImages/login.gif)
+
+四. 商品首页展示
