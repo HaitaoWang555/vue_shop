@@ -28,3 +28,4 @@ vue.js实现商城
   ![登录页效果图](readmeImages/login.gif)
 
 四. 商品首页展示
+  1. 引入 vant 作为商城UI框架 

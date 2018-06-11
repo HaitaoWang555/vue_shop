@@ -7,11 +7,14 @@
       <div class="login"><i class="iconfont icon-people"></i></div>
     </header>
     <!-- nav -->
-    <nav>
-      <div v-for="(nav, index) in navList" :key="nav.page_id" class="nav_item" :class="curIndex === index ? 'active' : ''" @click="navChange(index)">
-        <span>{{nav.name}}</span>
-      </div>
-    </nav>
+    <van-tabs>
+      <van-tab
+        v-for="nav in navList"
+        :title="nav.name"
+        :key="nav.page_id" class="nav_item"
+      >
+      </van-tab>
+    </van-tabs>
     <!-- header -->
     <!-- shoplist -->
   </div>
@@ -19,6 +22,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'home',
   data () {
@@ -34,7 +38,6 @@ export default {
     getNavList () {
       axios.get('http://rap2api.taobao.org/app/mock/16411/navList').then((res) => {
         this.navList = res.data.list
-        console.log(this.navList)
       }).catch((err) => {
         console.log(err)
       })
@@ -48,4 +51,12 @@ export default {
 
 <style scoped>
 @import "./css/home.css";
+</style>
+<style>
+.van-hairline--top-bottom:after {
+  border-top: none;
+}
+.van-tab {
+  background-color: #f2f2f2;
+}
 </style>
