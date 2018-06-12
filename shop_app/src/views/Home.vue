@@ -9,7 +9,6 @@
     <!-- nav -->
     <van-tabs
     :active='active'
-    sticky
     @click="onClick"
     >
       <van-tab
@@ -80,9 +79,12 @@ export default {
 </style>
 <style>
 /* 覆盖导航默认样式 */
-.home .van-tabs__wrap ,
-.home .van-tabs__content {
-  margin-top: 50px;
+.home .van-tabs {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 .home .van-tabs__wrap {
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2);

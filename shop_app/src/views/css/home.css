@@ -41,6 +41,8 @@ header {
   height: 800px;
   overflow-x: hidden;
   overflow-y: auto;
+  margin-top: 94px;
+  margin-bottom: 52px;
 }
 .shop {
   position: absolute;
