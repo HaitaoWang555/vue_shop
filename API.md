@@ -67,3 +67,10 @@ destroyed () {
 }
 ```
 Vue 实例销毁后调用
+
+```
+  components: {
+    Footer
+  }
+```
+components 包含 Vue 实例可用组件的哈希表

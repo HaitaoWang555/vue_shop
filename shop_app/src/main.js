@@ -5,10 +5,9 @@ import store from './store'
 import 'normalize.css'
 import './assets/css/reset.css'
 import './assets/fonts/iconfont.css'
-import { Tab, Tabs, Toast } from 'vant'
+import { Tab, Tabs, Toast, Icon } from 'vant'
 
-Vue.use(Tab).use(Tabs)
-Vue.use(Toast)
+Vue.use(Tab).use(Tabs).use(Toast).use(Icon)
 Vue.config.productionTip = false
 
 new Vue({
