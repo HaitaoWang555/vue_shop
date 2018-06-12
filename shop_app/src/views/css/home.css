@@ -36,7 +36,44 @@ header {
   width: 52px;
 }
 /* 内容区 */
-.nav_item {
-  min-height: 1000px;
-  background-color: #f2f2f2;
+.shopList {
+  position: relative;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.shop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #f2f2f2;
+  height: 800px;
+  line-height: 800px;
+  font-size: 72px;
+}
+
+.page-left-enter-active, .page-left-leave-active {
+  transition: all .5s;
+}
+.page-left-enter {
+  transform: translateX(100%);
+}
+.page-left-enter-to, .page-left-leave {
+  transform: translateX(0);
+}
+.page-left-leave-to {
+  transform: translateX(-100%);
+}
+.page-right-enter-active, .page-right-leave-active {
+  transition: all .5s;
+}
+.page-right-enter {
+  transform: translateX(-100%);
+}
+.page-right-enter-to, .page-right-leave {
+  transform: translateX(0);
+}
+.page-right-leave-to {
+  transform: translateX(100%);
 }

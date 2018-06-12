@@ -17,10 +17,18 @@
         :title="nav.name"
         :key="nav.page_id"
       >
-      <div class="nav_item">{{nav.name}}内容区</div>
       </van-tab>
     </van-tabs>
     <!-- shoplist -->
+    <transition-group class="shopList" tag="div" :name="transitionName" >
+      <div
+        v-for="(nav,index) in navList"
+        :key="nav.page_id"
+        v-show="index == curIndex"
+        class="shop" >
+        {{nav.name}}
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -35,7 +43,9 @@ export default {
   data () {
     return {
       navList: null,
-      active: 2
+      active: 0,
+      curIndex: 0,
+      transitionName: ''
     }
   },
   created () {
@@ -55,9 +65,11 @@ export default {
     onClick (index, title) {
       NProgress.start()
       setTimeout(() => {
+        this.transitionName = index > this.curIndex ? 'page-left' : 'page-right'
+        this.curIndex = index
         this.$toast(title)
         NProgress.done()
-      }, 2000)
+      }, 1000)
     }
   }
 }
