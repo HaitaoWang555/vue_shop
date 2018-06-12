@@ -7,15 +7,19 @@
       <div class="login"><i class="iconfont icon-people"></i></div>
     </header>
     <!-- nav -->
-    <van-tabs>
+    <van-tabs
+    :active='active'
+    sticky
+    @click="onClick"
+    >
       <van-tab
         v-for="nav in navList"
         :title="nav.name"
-        :key="nav.page_id" class="nav_item"
+        :key="nav.page_id"
       >
+      <div class="nav_item">{{nav.name}}内容区</div>
       </van-tab>
     </van-tabs>
-    <!-- header -->
     <!-- shoplist -->
   </div>
 </template>
@@ -28,7 +32,7 @@ export default {
   data () {
     return {
       navList: null,
-      curIndex: 0
+      active: 2
     }
   },
   created () {
@@ -42,8 +46,8 @@ export default {
         console.log(err)
       })
     },
-    navChange (index) {
-      this.curIndex = index
+    onClick (index, title) {
+      this.$toast(title)
     }
   }
 }
@@ -53,10 +57,18 @@ export default {
 @import "./css/home.css";
 </style>
 <style>
-.van-hairline--top-bottom:after {
+/* 覆盖导航默认样式 */
+.home .van-tabs__wrap ,
+.home .van-tabs__content {
+  margin-top: 50px;
+}
+.home .van-tabs__wrap {
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2);
+}
+.home .van-hairline--top-bottom:after {
   border-top: none;
 }
-.van-tab {
+.home .van-tab {
   background-color: #f2f2f2;
 }
 </style>
