@@ -60,3 +60,10 @@ create () {
 }
 ```
 在实例创建完成后被立即调用
+
+```
+destroyed () {
+  NProgress.remove()
+}
+```
+Vue 实例销毁后调用

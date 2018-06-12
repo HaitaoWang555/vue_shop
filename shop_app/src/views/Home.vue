@@ -26,6 +26,9 @@
 
 <script>
 import axios from 'axios'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+NProgress.configure({ showSpinner: false })
 
 export default {
   name: 'home',
@@ -38,6 +41,9 @@ export default {
   created () {
     this.getNavList()
   },
+  destroyed () {
+    NProgress.remove()
+  },
   methods: {
     getNavList () {
       axios.get('http://rap2api.taobao.org/app/mock/16411/navList').then((res) => {
@@ -47,7 +53,11 @@ export default {
       })
     },
     onClick (index, title) {
-      this.$toast(title)
+      NProgress.start()
+      setTimeout(() => {
+        this.$toast(title)
+        NProgress.done()
+      }, 2000)
     }
   }
 }
@@ -70,5 +80,12 @@ export default {
 }
 .home .van-tab {
   background-color: #f2f2f2;
+}
+/* 覆盖默认进度条样式 */
+#nprogress .bar {
+  background-color: rgba(237, 91, 0, 0.5);
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px rgba(237, 91, 0, 0.5), 0 0 5px rgba(237, 91, 0, 0.5);
 }
 </style>
