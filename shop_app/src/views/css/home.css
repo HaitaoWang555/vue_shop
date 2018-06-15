@@ -1,5 +1,6 @@
 .home {
   width: 100%;
+  padding-top: 94px;
 }
 /* header */
 header {
@@ -8,6 +9,11 @@ header {
   justify-content: space-around;
   align-items: center;
   background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
 }
 .searchLogo {
   width: 30px;
