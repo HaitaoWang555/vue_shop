@@ -80,6 +80,9 @@ export default {
       }
     }
   },
+  destroyed () {
+    clearInterval(this.timer)
+  },
   methods: {
     changeLogin () {
       this.isIdLogin = !this.isIdLogin
