@@ -42,12 +42,6 @@ export default {
 .page-left-enter-active, .page-left-leave-active {
   transition: all .5s ease;
 }
-.page-left-leave-to header{
-  position: relative!important;
-}
-.page-left-leave-to .shopList{
-  margin-top: 43px!important;
-}
 .page-left-enter {
   transform: translateX(100%);
 }
@@ -68,12 +62,6 @@ export default {
 }
 .page-right-enter-to {
   transform: translateX(0);
-}
-.page-right-enter-to header{
-  position: relative!important;
-}
-.page-right-enter-to .shopList{
-  margin-top: 43px!important;
 }
 .page-right-leave {
   transform: translateX(0);
