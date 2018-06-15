@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Login from './views/Login.vue'
-import Category from './views/Category.vue'
-import Cart from './views/Cart.vue'
-import User from './views/User.vue'
+const Home = () => import('./views/Home.vue')
+const Login = () => import('./views/Login.vue')
+const Category = () => import('./views/Category.vue')
+const Cart = () => import('./views/Cart.vue')
+const User = () => import('./views/User.vue')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -53,3 +53,8 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  document.querySelector('#app').scrollTop = 0
+  next()
+})
+export default router
