@@ -20,18 +20,36 @@
     </van-tabs>
     <!-- shoplist -->
     <transition-group class="shopList" tag="div" :name="transitionName" >
+      <!-- shoplistContent -->
+      <div class="shop" v-show="0 == curIndex" :key="0"><Recommend /></div>
+      <div class="shop" v-show="1 == curIndex" :key="1"><Active /></div>
+      <div class="shop" v-show="2 == curIndex" :key="2"><Intelligence /></div>
       <div
         v-for="(nav,index) in navList"
         :key="nav.page_id"
         v-show="index == curIndex"
-        class="shop" >
-        {{nav.name}}
+        class="shop"
+      >
+        <component
+          v-bind:is="nav.templateName"
+        >
+        </component>
       </div>
     </transition-group>
   </div>
 </template>
 
 <script>
+import Recommend from '@/views/homeChildren/Recommend.vue'
+import Active from '@/views/homeChildren/Active.vue'
+import Intelligence from '@/views/homeChildren/Intelligence.vue'
+import Tv from '@/views/homeChildren/Tv.vue'
+import Computer from '@/views/homeChildren/Computer.vue'
+import Mobile from '@/views/homeChildren/Mobile.vue'
+import DoubleCamera from '@/views/homeChildren/DoubleCamera.vue'
+import FullScreen from '@/views/homeChildren/FullScreen.vue'
+import Around from '@/views/homeChildren/Around.vue'
+import Box from '@/views/homeChildren/Box.vue'
 import axios from 'axios'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -39,6 +57,18 @@ NProgress.configure({ showSpinner: false })
 
 export default {
   name: 'home',
+  components: {
+    Recommend,
+    Active,
+    Intelligence,
+    Tv,
+    Computer,
+    Mobile,
+    DoubleCamera,
+    FullScreen,
+    Around,
+    Box
+  },
   data () {
     return {
       navList: null,
@@ -57,6 +87,7 @@ export default {
     getNavList () {
       axios.get('http://rap2api.taobao.org/app/mock/16411/navList').then((res) => {
         this.navList = res.data.list
+        this.moudle = res.data.list.templateName
       }).catch((err) => {
         console.log(err)
       })
