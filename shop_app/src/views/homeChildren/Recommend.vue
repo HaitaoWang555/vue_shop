@@ -3,18 +3,21 @@
   <div class="recommend">
     <Swiper :msg="swiperImages"/>
     <Tabbar :msg="tabList"/>
+    <DividerLine bgColor="rgb(245, 245, 245)" />
   </div>
 </template>
 
 <script>
 import Swiper from '@/components/Swiper.vue'
 import Tabbar from '@/components/Tabbar.vue'
+import DividerLine from '@/components/DividerLine.vue'
 import axios from 'axios'
 export default {
   name: 'recommend',
   components: {
     Swiper,
-    Tabbar
+    Tabbar,
+    DividerLine
   },
   data () {
     return {
