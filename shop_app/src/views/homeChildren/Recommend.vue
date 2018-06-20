@@ -1,20 +1,18 @@
 /* 推荐页vue组件 */
 <template>
   <div class="recommend">
-    <div class="swipWrap">
-      <van-swipe :autoplay="3000">
-        <van-swipe-item v-for="(images, index) in swiperImages" :key="index">
-            <img v-lazy="images.image" />
-        </van-swipe-item>
-      </van-swipe>
-    </div>
+    <Swiper :msg="swiperImages"/>
   </div>
 </template>
 
 <script>
+import Swiper from '@/components/Swiper.vue'
 import axios from 'axios'
 export default {
   name: 'recommend',
+  components: {
+    Swiper
+  },
   data () {
     return {
       swiperImages: null
@@ -36,8 +34,4 @@ export default {
 </script>
 
 <style scoped>
-.van-swipe img{
-  width: 375px;
-  height: 187.5px;
-}
 </style>
