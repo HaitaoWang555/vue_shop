@@ -39,6 +39,9 @@ header {
 .login {
   width: 52px;
 }
+.login i {
+  font-size: 22px;
+}
 /* 内容区 */
 .shopList {
   position: relative;
