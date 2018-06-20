@@ -21,9 +21,6 @@
     <!-- shoplist -->
     <transition-group class="shopList" tag="div" :name="transitionName" >
       <!-- shoplistContent -->
-      <div class="shop" v-show="0 == curIndex" :key="0"><Recommend /></div>
-      <div class="shop" v-show="1 == curIndex" :key="1"><Active /></div>
-      <div class="shop" v-show="2 == curIndex" :key="2"><Intelligence /></div>
       <div
         v-for="(nav,index) in navList"
         :key="nav.page_id"
