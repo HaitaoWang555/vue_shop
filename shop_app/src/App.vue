@@ -41,6 +41,7 @@ export default {
   min-height: 100vh;
   position: relative;
 }
+/* <transition> 切换效果 */
 .page-left-enter-active, .page-left-leave-active {
   transition: all .5s ease;
 }

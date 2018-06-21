@@ -29,7 +29,7 @@ vue.js实现商城
 
 四. 商品首页展示
   1. [引入 vant 作为商城UI框架](https://github.com/HaitaoWang555/vue_shop/commit/3287f706b294089189b04a39cdb0b6dd9a77c709)
-  2. 开始实现首页各个商品展示。
+  2. 实现首页各个商品展示。
 
 五. 底部导航
   1. [加入底部导航，完成路由配置，加入切换动画](https://github.com/HaitaoWang555/vue_shop/commit/9c4399cff6604ebda812b2f60e689ca08c868143)

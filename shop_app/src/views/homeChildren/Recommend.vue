@@ -30,18 +30,11 @@ export default {
   },
   methods: {
     recommendActive () {
-      this.getSwipe()
-      this.getTabList()
+      this.getRecommend()
     },
-    getSwipe () {
+    getRecommend () {
       axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/recommend').then((res) => {
         this.swiperImages = res.data.swiperImages
-      }).catch((err) => {
-        console.log(err)
-      })
-    },
-    getTabList () {
-      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/tabbar').then((res) => {
         this.tabList = res.data.tabList
       }).catch((err) => {
         console.log(err)

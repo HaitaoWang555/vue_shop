@@ -21,16 +21,20 @@ export default {
   },
   data () {
     return {
-      img: '//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/07fb1c97a2f6613ae3ed5e09ca5fa0bb.jpg?thumb=1&w=720&h=360',
+      img: '',
       tabList: null
     }
   },
   created () {
-    this.getTabList()
+    this.activeActive()
   },
   methods: {
-    getTabList () {
-      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/tabbar-active').then((res) => {
+    activeActive () {
+      this.getActive()
+    },
+    getActive () {
+      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/active').then((res) => {
+        this.img = res.data.img
         this.tabList = res.data.tabList
       }).catch((err) => {
         console.log(err)
@@ -45,7 +49,6 @@ export default {
   background-color: rgb(180, 53, 48);
 }
 header img{
-  display: block;
   width: 100%;
 }
 </style>

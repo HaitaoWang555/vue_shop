@@ -27,11 +27,13 @@
         v-show="index == curIndex"
         class="shop"
       >
+      <keep-alive>
         <component
           v-bind:is="nav.templateName"
           v-if="index == curIndex"
         >
         </component>
+        </keep-alive>
       </div>
     </transition-group>
   </div>
@@ -44,10 +46,7 @@ import Intelligence from '@/views/homeChildren/Intelligence.vue'
 import Tv from '@/views/homeChildren/Tv.vue'
 import Computer from '@/views/homeChildren/Computer.vue'
 import Mobile from '@/views/homeChildren/Mobile.vue'
-import DoubleCamera from '@/views/homeChildren/DoubleCamera.vue'
-import FullScreen from '@/views/homeChildren/FullScreen.vue'
 import Around from '@/views/homeChildren/Around.vue'
-import Box from '@/views/homeChildren/Box.vue'
 import axios from 'axios'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -62,10 +61,7 @@ export default {
     Tv,
     Computer,
     Mobile,
-    DoubleCamera,
-    FullScreen,
-    Around,
-    Box
+    Around
   },
   data () {
     return {
@@ -83,7 +79,7 @@ export default {
   },
   methods: {
     getNavList () {
-      axios.get('http://rap2api.taobao.org/app/mock/16411/navList').then((res) => {
+      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
       }).catch((err) => {
