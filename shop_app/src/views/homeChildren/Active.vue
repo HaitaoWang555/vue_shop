@@ -47,6 +47,9 @@ export default {
 .active {
   background-color: rgb(180, 53, 48);
 }
+header {
+  height: 187.5px;
+}
 header img{
   width: 100%;
 }

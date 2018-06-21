@@ -11,8 +11,16 @@ import 'nprogress/nprogress.css'
 import fetch from './api/fetch.js'
 
 NProgress.configure({ showSpinner: false })
-Vue.use(Tab).use(Tabs).use(Toast).use(Icon).use(Swipe).use(SwipeItem).use(Lazyload).use(Tabbar).use(TabbarItem)
+Vue.use(Tab).use(Tabs).use(Toast).use(Icon).use(Swipe).use(SwipeItem).use(Tabbar).use(TabbarItem)
 Vue.prototype.$NProgress = NProgress
+Vue.use(Lazyload, {
+  preLoad: 1,
+  /*
+  error: require('assets/images/error.png'),
+  loading: require('./assets/images/loading.gif'),
+  */
+  attempt: 1
+})
 Vue.prototype.$fetch = fetch
 Vue.config.productionTip = false
 
