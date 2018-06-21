@@ -12,7 +12,6 @@
 <script>
 import Tabbar from '@/components/Tabbar.vue'
 import DividerLine from '@/components/DividerLine.vue'
-import axios from 'axios'
 export default {
   name: 'active',
   components: {
@@ -33,7 +32,7 @@ export default {
       this.getActive()
     },
     getActive () {
-      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/active').then((res) => {
+      this.$fetch('active').then((res) => {
         this.img = res.data.img
         this.tabList = res.data.tabList
       }).catch((err) => {

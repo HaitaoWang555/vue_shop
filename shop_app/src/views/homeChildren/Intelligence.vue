@@ -11,7 +11,6 @@
 import Swiper from '@/components/Swiper.vue'
 import Tabbar from '@/components/Tabbar.vue'
 import DividerLine from '@/components/DividerLine.vue'
-import axios from 'axios'
 export default {
   name: 'intelligence',
   components: {
@@ -33,7 +32,7 @@ export default {
       this.getSwipe()
     },
     getSwipe () {
-      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/intelligence').then((res) => {
+      this.$fetch('intelligence').then((res) => {
         this.swiperImages = res.data.swiperImages
         this.tabList = res.data.tabList
       }).catch((err) => {

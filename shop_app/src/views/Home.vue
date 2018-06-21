@@ -47,7 +47,6 @@ import Tv from '@/views/homeChildren/Tv.vue'
 import Computer from '@/views/homeChildren/Computer.vue'
 import Mobile from '@/views/homeChildren/Mobile.vue'
 import Around from '@/views/homeChildren/Around.vue'
-import axios from 'axios'
 
 export default {
   name: 'home',
@@ -77,7 +76,7 @@ export default {
   },
   methods: {
     getNavList () {
-      axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/navList').then((res) => {
+      this.$fetch('navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
         this.$NProgress.done()
