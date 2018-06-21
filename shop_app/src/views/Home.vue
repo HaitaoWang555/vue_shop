@@ -48,9 +48,6 @@ import Computer from '@/views/homeChildren/Computer.vue'
 import Mobile from '@/views/homeChildren/Mobile.vue'
 import Around from '@/views/homeChildren/Around.vue'
 import axios from 'axios'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-NProgress.configure({ showSpinner: false })
 
 export default {
   name: 'home',
@@ -73,27 +70,28 @@ export default {
   },
   created () {
     this.getNavList()
+    this.$NProgress.start()
   },
   destroyed () {
-    NProgress.remove()
+    this.$NProgress.remove()
   },
   methods: {
     getNavList () {
       axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
+        this.$NProgress.done()
       }).catch((err) => {
         console.log(err)
       })
     },
     onClick (index, title) {
-      NProgress.start()
+      this.$NProgress.start()
+      this.transitionName = index > this.curIndex ? 'page-left' : 'page-right'
       setTimeout(() => {
-        this.transitionName = index > this.curIndex ? 'page-left' : 'page-right'
         this.curIndex = index
-        this.$toast(title)
-        NProgress.done()
-      }, 1000)
+        this.$NProgress.done()
+      }, 300)
     }
   }
 }

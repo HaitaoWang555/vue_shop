@@ -40,6 +40,10 @@
 
 <script>
 export default {
+  created () {
+    this.$NProgress.start()
+    this.over()
+  },
   data () {
     return {
       isIdLogin: true,
@@ -82,6 +86,7 @@ export default {
   },
   destroyed () {
     clearInterval(this.timer)
+    this.$NProgress.remove()
   },
   methods: {
     changeLogin () {
@@ -155,6 +160,11 @@ export default {
           this.formSuccess()
         }
       }
+    },
+    over () {
+      setTimeout(() => {
+        this.$NProgress.done()
+      }, 1000)
     }
   }
 }

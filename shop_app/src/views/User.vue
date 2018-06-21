@@ -7,15 +7,20 @@
 
 <script>
 export default {
-  name: 'page',
-  props: {
-
+  name: 'user',
+  created () {
+    this.$NProgress.start()
+    this.over()
+  },
+  destroyed () {
+    this.$NProgress.remove()
   },
   methods: {
-
-  },
-  components: {
-
+    over () {
+      setTimeout(() => {
+        this.$NProgress.done()
+      }, 1000)
+    }
   }
 }
 </script>
