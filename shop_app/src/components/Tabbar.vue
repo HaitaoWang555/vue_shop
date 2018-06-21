@@ -31,8 +31,10 @@ export default {
 }
 .van-tabbar,
 .van-tabbar-item,
-.van-tabbar-item__icon,
 .van-tabbar-item__icon img {
   height: 79px;
+}
+.van-hairline--top-bottom:after {
+  border-width: 0;
 }
 </style>

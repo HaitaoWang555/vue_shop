@@ -29,6 +29,7 @@
       >
         <component
           v-bind:is="nav.templateName"
+          v-if="index == curIndex"
         >
         </component>
       </div>
@@ -129,5 +130,10 @@ export default {
 }
 #nprogress .peg {
   box-shadow: 0 0 10px rgba(237, 91, 0, 0.5), 0 0 5px rgba(237, 91, 0, 0.5);
+}
+/* 覆盖tabbar vue组件 */
+.home .van-tabbar-item__icon {
+  height: 79px;
+  margin-bottom: 0;
 }
 </style>

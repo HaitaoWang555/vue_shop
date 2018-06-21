@@ -26,10 +26,13 @@ export default {
     }
   },
   created () {
-    this.getSwipe()
-    this.getTabList()
+    this.recommendActive()
   },
   methods: {
+    recommendActive () {
+      this.getSwipe()
+      this.getTabList()
+    },
     getSwipe () {
       axios.get('https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96/vue_shop/recommend').then((res) => {
         this.swiperImages = res.data.swiperImages
