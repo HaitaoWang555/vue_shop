@@ -8,7 +8,8 @@ const url = {
   intelligence: '/vue_shop/intelligence',
   computer: '/vue_shop/computer',
   around: '/vue_shop/around',
-  tv: '/vue_shop/tv'
+  tv: '/vue_shop/tv',
+  category: '/vue_shop/category'
 }
 
 Object.keys(url).forEach(key => {
