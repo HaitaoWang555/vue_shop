@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-shell-footer app-bottom-navigator-wrapper">
+  <footer v-if="!loading" class="app-shell-footer app-bottom-navigator-wrapper">
     <div class="fill-height box-flex align-center">
       <router-link
         v-for="nav in navList"
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import bus from '../bus.js'
 const navList = [
   {
     name: '首页',
@@ -40,8 +41,14 @@ const navList = [
 export default {
   data () {
     return {
-      navList
+      navList,
+      loading: true
     }
+  },
+  created () {
+    bus.$on('loading', (val) => {
+      this.loading = val
+    })
   }
 }
 </script>
