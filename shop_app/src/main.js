@@ -15,10 +15,8 @@ Vue.use(Tab).use(Tabs).use(Toast).use(Icon).use(Swipe).use(SwipeItem).use(Tabbar
 Vue.prototype.$NProgress = NProgress
 Vue.use(Lazyload, {
   preLoad: 1,
-  /*
-  error: require('assets/images/error.png'),
+  error: require('./assets/images/error.png'),
   loading: require('./assets/images/loading.gif'),
-  */
   attempt: 1
 })
 Vue.prototype.$fetch = fetch
