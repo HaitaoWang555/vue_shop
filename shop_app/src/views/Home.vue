@@ -1,45 +1,52 @@
 <template>
   <div class="home">
-    <!-- header -->
-    <header>
-      <div class="searchLogo"><img src="../assets/images/searchlogo.png"></div>
-      <div class="search"><i class="iconfont icon-search"></i><span>搜索商品名称</span></div>
-      <div class="login"><router-link to="/login"><i class="iconfont icon-people"></i></router-link></div>
-    </header>
-    <!-- nav -->
-    <van-tabs
-    :active='active'
-    @click="onClick"
-    >
-      <van-tab
-        v-for="nav in navList"
-        :title="nav.name"
-        :key="nav.page_id"
+    <!-- loading -->
+    <div class="loading">
+      <Loading  v-if="loading" />
+    </div>
+    <div class="homeContent" v-if="!loading">
+      <!-- header -->
+      <header>
+        <div class="searchLogo"><img src="../assets/images/searchlogo.png"></div>
+        <div class="search"><i class="iconfont icon-search"></i><span>搜索商品名称</span></div>
+        <div class="login"><router-link to="/login"><i class="iconfont icon-people"></i></router-link></div>
+      </header>
+      <!-- nav -->
+      <van-tabs
+      :active='active'
+      @click="onClick"
       >
-      </van-tab>
-    </van-tabs>
-    <!-- shoplist -->
-    <transition-group class="shopList" tag="div" :name="transitionName" >
-      <!-- shoplistContent -->
-      <div
-        v-for="(nav,index) in navList"
-        :key="nav.page_id"
-        v-show="index == curIndex"
-        class="shop"
-      >
-      <keep-alive>
-        <component
-          v-bind:is="nav.templateName"
-          v-if="index == curIndex"
+        <van-tab
+          v-for="nav in navList"
+          :title="nav.name"
+          :key="nav.page_id"
         >
-        </component>
-        </keep-alive>
-      </div>
-    </transition-group>
+        </van-tab>
+      </van-tabs>
+      <!-- shoplist -->
+      <transition-group class="shopList" tag="div" :name="transitionName" >
+        <!-- shoplistContent -->
+        <div
+          v-for="(nav,index) in navList"
+          :key="nav.page_id"
+          v-show="index == curIndex"
+          class="shop"
+        >
+        <keep-alive>
+          <component
+            v-bind:is="nav.templateName"
+            v-if="index == curIndex"
+          >
+          </component>
+          </keep-alive>
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
 <script>
+import Loading from '@/components/Loading.vue'
 import Recommend from '@/views/homeChildren/Recommend.vue'
 import Active from '@/views/homeChildren/Active.vue'
 import Intelligence from '@/views/homeChildren/Intelligence.vue'
@@ -51,6 +58,7 @@ import Around from '@/views/homeChildren/Around.vue'
 export default {
   name: 'home',
   components: {
+    Loading,
     Recommend,
     Active,
     Intelligence,
@@ -61,6 +69,7 @@ export default {
   },
   data () {
     return {
+      loading: true,
       navList: null,
       active: 0,
       curIndex: 0,
@@ -79,6 +88,7 @@ export default {
       this.$fetch('navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
+        this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
         console.log(err)
