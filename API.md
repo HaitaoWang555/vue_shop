@@ -103,3 +103,19 @@ routes: [
 ]
 ```
 路由的重定向
+
+```
+// 新建bus.js
+import Vue from 'vue'
+const bus = new Vue()
+export default bus
+// Home 
+ bus.$emit('loading', false)
+// Footer 
+created () {
+  bus.$on('loading', (val) => {
+    this.loading = val
+  })
+}
+```
+组件通信(全局bus) vm.$on监听当前实例上的自定义事件。事件可以由vm.$emit触发

@@ -52,6 +52,7 @@ import Tv from '@/views/homeChildren/Tv.vue'
 import Computer from '@/views/homeChildren/Computer.vue'
 import Mobile from '@/views/homeChildren/Mobile.vue'
 import Around from '@/views/homeChildren/Around.vue'
+import bus from '@/bus.js'
 
 export default {
   name: 'home',
@@ -86,7 +87,12 @@ export default {
       this.$fetch('navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
-        // this.loading = false
+        setTimeout(() => {
+          this.loading = false
+          console.log(bus)
+          bus.$emit('loading', false)
+        }, 3000)
+
         this.$NProgress.done()
       }).catch((err) => {
         console.log(err)
