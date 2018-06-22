@@ -20,4 +20,5 @@ fieldset {
 }
 img {
   display: block;
+  content: normal !important;
 }
