@@ -72,4 +72,11 @@ export default {
 .page-right-leave-to {
   transform: translateX(100%);
 }
+/* 覆盖默认进度条样式 */
+#nprogress .bar {
+  background-color: rgba(237, 91, 0, 0.5)!important;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px rgba(237, 91, 0, 0.5), 0 0 5px rgba(237, 91, 0, 0.5)!important;
+}
 </style>

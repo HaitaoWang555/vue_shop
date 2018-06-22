@@ -36,6 +36,9 @@ export default {
   box-shadow: 0 -1px 4px 2px rgba(0, 0, 0, 0.12);
   z-index: 99999;
 }
+.loading.isFooter::after {
+  content: normal;
+}
 img{
   width: 100%;
 }

@@ -89,11 +89,9 @@ export default {
         this.moudle = res.data.list.templateName
         setTimeout(() => {
           this.loading = false
-          console.log(bus)
           bus.$emit('loading', false)
-        }, 3000)
-
-        this.$NProgress.done()
+          this.$NProgress.done()
+        }, 1000)
       }).catch((err) => {
         console.log(err)
       })
@@ -130,13 +128,6 @@ export default {
 }
 .home .van-tab {
   background-color: #f2f2f2;
-}
-/* 覆盖默认进度条样式 */
-#nprogress .bar {
-  background-color: rgba(237, 91, 0, 0.5);
-}
-#nprogress .peg {
-  box-shadow: 0 0 10px rgba(237, 91, 0, 0.5), 0 0 5px rgba(237, 91, 0, 0.5);
 }
 /* 覆盖tabbar vue组件 */
 .home .van-tabbar-item__icon {
