@@ -4,19 +4,20 @@
     <!-- loading -->
     <Loading class="isFooter" v-if="loading" />
     <div class="categoryContent" v-if="!loading">
-      categoryContent
+      <AppHeader title="分类" />
     </div>
   </div>
 </template>
 
 <script>
 import Loading from '@/components/Loading.vue'
+import AppHeader from '@/components/AppHeader.vue'
 import bus from '@/bus.js'
 export default {
   name: 'category',
   components: {
     Loading,
-    bus
+    AppHeader
   },
   data () {
     return {
