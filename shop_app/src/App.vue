@@ -22,6 +22,10 @@ export default {
   },
   watch: {
     '$route' (to, from) {
+      if (!from.name) {
+        this.transitionName = ''
+        return
+      }
       this.transitionName = to.meta.index < from.meta.index ? 'page-right' : 'page-left'
     }
   }
