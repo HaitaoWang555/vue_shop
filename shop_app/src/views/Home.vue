@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <!-- loading -->
-    <div class="loading">
-      <Loading  v-if="loading" />
-    </div>
+    <Loading  v-if="loading" />
     <div class="homeContent" v-if="!loading">
       <!-- header -->
       <header>
@@ -88,7 +86,7 @@ export default {
       this.$fetch('navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
-        this.loading = false
+        // this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
         console.log(err)
