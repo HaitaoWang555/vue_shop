@@ -36,7 +36,8 @@ export default {
   data () {
     return {
       offsetTop: [],
-      scrollTimer: null
+      scrollTimer: null,
+      scrollTop: 0
     }
   },
   components: {
@@ -51,6 +52,9 @@ export default {
       bus.$emit('scrollHandler', this.scrollHandler)
     })
   },
+  activated () {
+    document.querySelector('.listWrap').scrollTo(0, this.scrollTop)
+  },
   methods: {
     wrapScroll (e) {
       document.querySelector('.listWrap').addEventListener('scroll', this.scrollHandler)
@@ -58,10 +62,10 @@ export default {
     scrollHandler () {
       clearTimeout(this.scrollTimer)
       this.scrollTimer = setTimeout(() => {
-        let scrollTop = document.querySelector('.listWrap').scrollTop
+        this.scrollTop = document.querySelector('.listWrap').scrollTop
         let len = this.offsetTop.length
         for (let index = 0; index < len; index++) {
-          if (scrollTop >= this.offsetTop[index] && scrollTop < this.offsetTop[index + 1]) {
+          if (this.scrollTop >= this.offsetTop[index] && this.scrollTop < this.offsetTop[index + 1]) {
             bus.$emit('curIndex', index)
             console.log(index)
             break
