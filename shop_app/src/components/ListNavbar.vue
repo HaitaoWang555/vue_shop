@@ -27,17 +27,25 @@ export default {
   data () {
     return {
       curIndex: 0,
-      offsetTop: null
+      offsetTop: null,
+      scrollHandler: null
     }
   },
   created () {
     bus.$on('offsetTop', (val) => {
       this.offsetTop = val
     })
+    bus.$on('curIndex', (val) => {
+      this.curIndex = val
+    })
+    bus.$on('scrollHandler', (val) => {
+      this.scrollHandler = val
+    })
   },
   methods: {
     changeIndex (index) {
       this.curIndex = index
+      document.querySelector('.listWrap').removeEventListener('scroll', this.scrollHandler)
       document.querySelector('.listWrap').scrollTo(0, this.offsetTop[index])
     }
   }

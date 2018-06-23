@@ -1,6 +1,6 @@
 /* vue组件 */
 <template>
-  <div class="listWrap">
+  <div class="listWrap" @touchstart="wrapScroll">
     <div
       v-for="(list, index) in categoryList"
       :key="list.category_id"
@@ -35,7 +35,8 @@ export default {
   },
   data () {
     return {
-      offsetTop: []
+      offsetTop: [],
+      scrollTimer: null
     }
   },
   components: {
@@ -47,10 +48,27 @@ export default {
         this.offsetTop.push(this.$refs['category' + index][0].offsetTop)
       })
       bus.$emit('offsetTop', this.offsetTop)
+      bus.$emit('scrollHandler', this.scrollHandler)
     })
   },
   methods: {
-
+    wrapScroll (e) {
+      document.querySelector('.listWrap').addEventListener('scroll', this.scrollHandler)
+    },
+    scrollHandler () {
+      clearTimeout(this.scrollTimer)
+      this.scrollTimer = setTimeout(() => {
+        let scrollTop = document.querySelector('.listWrap').scrollTop
+        let len = this.offsetTop.length
+        for (let index = 0; index < len; index++) {
+          if (scrollTop >= this.offsetTop[index] && scrollTop < this.offsetTop[index + 1]) {
+            bus.$emit('curIndex', index)
+            console.log(index)
+            break
+          }
+        }
+      }, 100)
+    }
   }
 }
 </script>
