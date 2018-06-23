@@ -21,14 +21,16 @@ export default {
   props: {
     categoryList: {
       default: null
-    },
-    curIndex: {
-      default: null
+    }
+  },
+  data () {
+    return {
+      curIndex: 0
     }
   },
   methods: {
     changeIndex (index) {
-      console.log(index)
+      this.curIndex = index
     }
   }
 }
@@ -37,7 +39,7 @@ export default {
 <style scoped>
 .listNavbar {
   position: fixed;
-  top: 50px;
+  top: 52px;
   bottom: 52px;
   left: 0;
   width: 80px;

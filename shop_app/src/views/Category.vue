@@ -5,7 +5,7 @@
     <Loading class="isFooter" v-if="loading" />
     <template  v-if="!loading">
       <AppHeader title="分类" />
-      <ListNavbar :categoryList="categoryList" :curIndex="curIndex"/>
+      <ListNavbar :categoryList="categoryList" />
       <ListWrap :categoryList="categoryList"/>
     </template>
   </div>
@@ -27,9 +27,7 @@ export default {
   },
   data () {
     return {
-      loading: true,
-      categoryList: null,
-      curIndex: 0
+      loading: true
     }
   },
   created () {

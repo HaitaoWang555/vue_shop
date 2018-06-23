@@ -45,7 +45,7 @@ export default {
   position: absolute;
   left: 80px;
   right: 0;
-  top: 49px;
+  top: 52px;
   bottom: 52px;
   padding: 2px 16px;
   overflow: auto;
