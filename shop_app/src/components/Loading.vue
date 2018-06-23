@@ -34,10 +34,7 @@ export default {
   width: 100%;
   height: 50px;
   box-shadow: 0 -1px 4px 2px rgba(0, 0, 0, 0.12);
-  z-index: 99999;
-}
-.loading.isFooter::after {
-  content: normal;
+  z-index: 999;
 }
 img{
   width: 100%;
