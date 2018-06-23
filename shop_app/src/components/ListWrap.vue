@@ -2,8 +2,9 @@
 <template>
   <div class="listWrap">
     <div
-      v-for="list in categoryList"
+      v-for="(list, index) in categoryList"
       :key="list.category_id"
+      :ref="'category'+index"
       class="list-item">
       <div class="component-list-main">
         <div class="cells_auto_fill">
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import bus from '../bus.js'
 import CategoryGroup from '@/components/CategoryGroup.vue'
 export default {
   name: 'listWrap',
@@ -31,8 +33,21 @@ export default {
       default: null
     }
   },
+  data () {
+    return {
+      offsetTop: []
+    }
+  },
   components: {
     CategoryGroup
+  },
+  created () {
+    this.$nextTick(() => {
+      this.categoryList.forEach((item, index) => {
+        this.offsetTop.push(this.$refs['category' + index][0].offsetTop)
+      })
+      bus.$emit('offsetTop', this.offsetTop)
+    })
   },
   methods: {
 
@@ -45,8 +60,9 @@ export default {
   position: absolute;
   left: 80px;
   right: 0;
-  top: 52px;
+  top: 0;
   bottom: 52px;
+  margin-top: 52px;
   padding: 2px 16px;
   overflow: auto;
 }

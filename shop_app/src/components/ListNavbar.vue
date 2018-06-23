@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import bus from '../bus.js'
 export default {
   name: 'listNavbar',
   props: {
@@ -25,12 +26,19 @@ export default {
   },
   data () {
     return {
-      curIndex: 0
+      curIndex: 0,
+      offsetTop: null
     }
+  },
+  created () {
+    bus.$on('offsetTop', (val) => {
+      this.offsetTop = val
+    })
   },
   methods: {
     changeIndex (index) {
       this.curIndex = index
+      document.querySelector('.listWrap').scrollTo(0, this.offsetTop[index])
     }
   }
 }
