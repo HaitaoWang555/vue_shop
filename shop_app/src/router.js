@@ -5,6 +5,7 @@ const Login = () => import('./views/Login.vue')
 const Category = () => import('./views/Category.vue')
 const Cart = () => import('./views/Cart.vue')
 const User = () => import('./views/User.vue')
+const List = () => import('./views/List.vue')
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ const router = new Router({
       meta: {
         index: 4
       }
+    },
+    {
+      path: '/list/:id',
+      name: 'list',
+      component: List
     }
   ]
 })

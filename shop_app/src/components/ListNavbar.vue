@@ -38,7 +38,7 @@ export default {
 .listNavbar {
   position: fixed;
   top: 50px;
-  bottom: 40px;
+  bottom: 52px;
   left: 0;
   width: 80px;
   border-right: 1px solid #efefef;

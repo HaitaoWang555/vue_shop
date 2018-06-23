@@ -3,10 +3,11 @@
   <div class="category">
     <!-- loading -->
     <Loading class="isFooter" v-if="loading" />
-    <div class="categoryContent" v-if="!loading">
+    <template  v-if="!loading">
       <AppHeader title="分类" />
       <ListNavbar :categoryList="categoryList" :curIndex="curIndex"/>
-    </div>
+      <ListWrap :categoryList="categoryList"/>
+    </template>
   </div>
 </template>
 
@@ -14,13 +15,15 @@
 import Loading from '@/components/Loading.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import ListNavbar from '@/components/ListNavbar.vue'
+import ListWrap from '@/components/ListWrap.vue'
 import bus from '@/bus.js'
 export default {
   name: 'category',
   components: {
     Loading,
     AppHeader,
-    ListNavbar
+    ListNavbar,
+    ListWrap
   },
   data () {
     return {
@@ -64,7 +67,6 @@ export default {
   right: 0;
   width: 100%;
   min-height: 800px;
-  background-color:#f2f2f2;
 }
 .isFooter {
   margin-top: 50px;

@@ -2,17 +2,13 @@
 <template>
   <div class="header layout">
     <div class="app-header-left" @click="goback">
-      <a class="app-header-item">
         <van-icon name="arrow-left" />
-      </a>
     </div>
     <div class="app-header-middle">
       <div class="app-header-title">{{title}}</div>
     </div>
     <div class="app-header-right">
-      <a class="app-header-item">
         <van-icon name="search" />
-      </a>
     </div>
   </div>
 </template>
@@ -49,6 +45,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  background: #f2f2f2;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2);
 }
 .app-header-middle {
@@ -62,5 +59,6 @@ export default {
 .header i {
   font-size: 20px;
   color: #666;
+  vertical-align: middle;
 }
 </style>
