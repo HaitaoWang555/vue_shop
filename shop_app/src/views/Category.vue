@@ -27,13 +27,23 @@ export default {
   },
   data () {
     return {
-      loading: true
+      loading: true,
+      categoryList: []
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    if (from.name) {
+      next(vm => {
+        if (vm.Loading) {
+          vm.getCategory()
+        }
+      })
+    } else {
+      next(vm => vm.getCategory())
     }
   },
   created () {
     this.$NProgress.start()
-    this.over()
-    this.getCategory()
   },
   destroyed () {
     this.$NProgress.remove()
@@ -49,6 +59,7 @@ export default {
     getCategory () {
       this.$fetch('category').then((res) => {
         this.categoryList = res.data.lists
+        this.over()
       }).catch((err) => {
         console.log(err)
       })
