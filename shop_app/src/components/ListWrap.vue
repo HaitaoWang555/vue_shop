@@ -50,6 +50,9 @@ export default {
       })
       bus.$emit('offsetTop', this.offsetTop)
       bus.$emit('scrollHandler', this.scrollHandler)
+      bus.$on('scrollTop', (val) => {
+        this.scrollTop = val
+      })
     })
   },
   activated () {
@@ -63,6 +66,7 @@ export default {
       clearTimeout(this.scrollTimer)
       this.scrollTimer = setTimeout(() => {
         this.scrollTop = document.querySelector('.listWrap').scrollTop
+        bus.$emit('scrollTop', this.scrollTop)
         let len = this.offsetTop.length
         for (let index = 0; index < len; index++) {
           if (this.scrollTop >= this.offsetTop[index] && this.scrollTop < this.offsetTop[index + 1]) {

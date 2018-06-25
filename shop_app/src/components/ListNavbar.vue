@@ -47,6 +47,7 @@ export default {
       this.curIndex = index
       document.querySelector('.listWrap').removeEventListener('scroll', this.scrollHandler)
       document.querySelector('.listWrap').scrollTo(0, this.offsetTop[index])
+      bus.$emit('scrollTop', this.offsetTop[index])
     }
   }
 }
