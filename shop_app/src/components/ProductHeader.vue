@@ -45,7 +45,8 @@ header {
   line-height: 32px;
 }
 header i {
-  font-size: 20px;
+  font-size: 14px;
+  font-weight: bolder;
   color:#ddd;
   vertical-align: middle;
 }

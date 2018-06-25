@@ -3,12 +3,15 @@
   <div class="product">
     <ProductHeader />
     <Swiper :msg="swiperImages"/>
+    <GoodsAction />
   </div>
 </template>
 
 <script>
 import Swiper from '@/components/Swiper.vue'
 import ProductHeader from '@/components/ProductHeader.vue'
+import GoodsAction from '@/components/GoodsAction.vue'
+import bus from '@/bus.js'
 export default {
   name: 'product',
   data () {
@@ -18,10 +21,12 @@ export default {
   },
   components: {
     Swiper,
-    ProductHeader
+    ProductHeader,
+    GoodsAction
   },
   created () {
     this.getProduct()
+    bus.$emit('loading', true)
   },
   methods: {
     getProduct () {
