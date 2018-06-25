@@ -5,7 +5,7 @@
         v-for="product in products"
         :key="product.category_id"
         class="product exposure item"
-        :to="{name: 'list', params: {id: product.category_id}}">
+        :to="{name: 'product', params: {id: product.category_id}}">
           <div class="img">
             <img class="big" v-lazy="product.img_url">
           </div>

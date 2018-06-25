@@ -9,7 +9,8 @@ const url = {
   computer: '/vue_shop/computer',
   around: '/vue_shop/around',
   tv: '/vue_shop/tv',
-  category: '/vue_shop/category'
+  category: '/vue_shop/category',
+  product: '/vue_shop/product'
 }
 
 Object.keys(url).forEach(key => {
