@@ -34,7 +34,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     if (from.name) {
       next(vm => {
-        if (vm.Loading) {
+        if (vm.loading) {
           vm.getCategory()
         }
       })
