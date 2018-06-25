@@ -24,9 +24,13 @@ export default {
     ProductHeader,
     GoodsAction
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      bus.$emit('loading', true)
+    })
+  },
   created () {
     this.getProduct()
-    bus.$emit('loading', true)
   },
   methods: {
     getProduct () {
