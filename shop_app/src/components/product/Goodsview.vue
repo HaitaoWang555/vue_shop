@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import DOMPurify from 'dompurify'
 export default {
   name: 'goodsview',
   props: {
@@ -18,8 +19,8 @@ export default {
       default: null
     }
   },
-  components: {
-
+  created () {
+    this.goodsview.goodsBrief = DOMPurify.sanitize(this.goodsview.goodsBrief)
   },
   methods: {
 
