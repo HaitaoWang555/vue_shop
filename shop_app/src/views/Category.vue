@@ -14,8 +14,8 @@
 <script>
 import Loading from '@/components/Loading.vue'
 import AppHeader from '@/components/AppHeader.vue'
-import ListNavbar from '@/components/ListNavbar.vue'
-import ListWrap from '@/components/ListWrap.vue'
+import ListNavbar from '@/components/category/ListNavbar.vue'
+import ListWrap from '@/components/category/ListWrap.vue'
 import bus from '@/bus.js'
 export default {
   name: 'category',
@@ -32,17 +32,14 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    if (from.name) {
-      next(vm => {
-        if (vm.loading) {
-          vm.getCategory()
-        }
-      })
-    } else {
-      next(vm => vm.getCategory())
-    }
+    next(vm => {
+      if (vm.loading) {
+        vm.getCategory()
+      }
+    })
   },
   created () {
+    this.$NProgress.start()
   },
   destroyed () {
     this.$NProgress.remove()

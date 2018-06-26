@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import bus from '../bus.js'
-import CategoryGroup from '@/components/CategoryGroup.vue'
+import bus from '@/bus.js'
+import CategoryGroup from '@/components/category/CategoryGroup.vue'
 export default {
   name: 'listWrap',
   props: {

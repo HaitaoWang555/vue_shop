@@ -9,6 +9,7 @@
 export default {
   name: 'user',
   created () {
+    this.$NProgress.start()
     this.over()
   },
   destroyed () {

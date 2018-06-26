@@ -10,17 +10,11 @@
         <div class="login"><router-link to="/login"><i class="iconfont icon-people"></i></router-link></div>
       </header>
       <!-- nav -->
-      <van-tabs
-      :active='active'
-      @click="onClick"
-      >
-        <van-tab
-          v-for="nav in navList"
-          :title="nav.name"
-          :key="nav.page_id"
-        >
-        </van-tab>
-      </van-tabs>
+      <Tabs
+        :active='active'
+        :navList="navList"
+        :onClick="onClick"
+      />
       <!-- shoplist -->
       <transition-group class="shopList" tag="div" :name="transitionName" >
         <!-- shoplistContent -->
@@ -44,20 +38,22 @@
 </template>
 
 <script>
+import Tabs from '@/components/Tabs.vue'
 import Loading from '@/components/Loading.vue'
-import Recommend from '@/views/homeChildren/Recommend.vue'
-import Active from '@/views/homeChildren/Active.vue'
-import Intelligence from '@/views/homeChildren/Intelligence.vue'
-import Tv from '@/views/homeChildren/Tv.vue'
-import Computer from '@/views/homeChildren/Computer.vue'
-import Mobile from '@/views/homeChildren/Mobile.vue'
-import Around from '@/views/homeChildren/Around.vue'
+import Recommend from '@/components/homeChildren/Recommend.vue'
+import Active from '@/components/homeChildren/Active.vue'
+import Intelligence from '@/components/homeChildren/Intelligence.vue'
+import Tv from '@/components/homeChildren/Tv.vue'
+import Computer from '@/components/homeChildren/Computer.vue'
+import Mobile from '@/components/homeChildren/Mobile.vue'
+import Around from '@/components/homeChildren/Around.vue'
 import bus from '@/bus.js'
 
 export default {
   name: 'home',
   components: {
     Loading,
+    Tabs,
     Recommend,
     Active,
     Intelligence,
@@ -76,6 +72,7 @@ export default {
     }
   },
   created () {
+    this.$NProgress.start()
     this.getNavList()
   },
   destroyed () {

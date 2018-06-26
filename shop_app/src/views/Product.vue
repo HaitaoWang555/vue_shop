@@ -9,8 +9,8 @@
 
 <script>
 import Swiper from '@/components/Swiper.vue'
-import ProductHeader from '@/components/ProductHeader.vue'
-import GoodsAction from '@/components/GoodsAction.vue'
+import ProductHeader from '@/components/product/ProductHeader.vue'
+import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
   name: 'product',
@@ -30,12 +30,17 @@ export default {
     })
   },
   created () {
+    this.$NProgress.start()
     this.getProduct()
+  },
+  destroyed () {
+    this.$NProgress.remove()
   },
   methods: {
     getProduct () {
       this.$fetch('product').then((res) => {
         this.swiperImages = res.data.swiperImages
+        this.$NProgress.done()
       }).catch((err) => {
         console.log(err)
       })

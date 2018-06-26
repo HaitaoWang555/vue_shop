@@ -41,6 +41,7 @@
 <script>
 export default {
   created () {
+    this.$NProgress.start()
     this.over()
   },
   data () {

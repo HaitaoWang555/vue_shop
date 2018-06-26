@@ -9,6 +9,7 @@
 export default {
   name: 'cart',
   created () {
+    this.$NProgress.start()
     this.over()
   },
   destroyed () {

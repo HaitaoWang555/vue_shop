@@ -5,13 +5,13 @@ import store from './store'
 import 'normalize.css'
 import './assets/css/reset.css'
 import './assets/fonts/iconfont.css'
-import { Tab, Tabs, Toast, Icon, Swipe, SwipeItem, Lazyload, Tabbar, TabbarItem } from 'vant'
+import { Toast, Icon, Lazyload } from 'vant'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import fetch from './api/fetch.js'
 
 NProgress.configure({ showSpinner: false })
-Vue.use(Tab).use(Tabs).use(Toast).use(Icon).use(Swipe).use(SwipeItem).use(Tabbar).use(TabbarItem)
+Vue.use(Toast).use(Icon)
 Vue.prototype.$NProgress = NProgress
 Vue.use(Lazyload, {
   preLoad: 1,
@@ -21,7 +21,6 @@ Vue.prototype.$fetch = fetch
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  NProgress.start()
   document.querySelector('#app').scrollTop = 0
   next()
 })
