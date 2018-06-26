@@ -20,6 +20,12 @@ Vue.use(Lazyload, {
 Vue.prototype.$fetch = fetch
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  document.querySelector('#app').scrollTop = 0
+  next()
+})
+
 new Vue({
   router,
   store,

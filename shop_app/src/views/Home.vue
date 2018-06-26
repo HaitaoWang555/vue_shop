@@ -77,7 +77,6 @@ export default {
   },
   created () {
     this.getNavList()
-    this.$NProgress.start()
   },
   destroyed () {
     this.$NProgress.remove()

@@ -43,7 +43,6 @@ export default {
     }
   },
   created () {
-    this.$NProgress.start()
   },
   destroyed () {
     this.$NProgress.remove()

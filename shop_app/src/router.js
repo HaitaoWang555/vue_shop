@@ -62,8 +62,5 @@ const router = new Router({
     }
   ]
 })
-router.beforeEach((to, from, next) => {
-  document.querySelector('#app').scrollTop = 0
-  next()
-})
+
 export default router
