@@ -6,3 +6,5 @@
 ### Goodsview组件
   1. 商品信息展示 goodsview 接受 父组件数据
   2. DOMPurify 防止XSS攻击
+### goodsCell组件
+  1. 商品信息Cell goodsCell 接受 父组件数据

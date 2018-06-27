@@ -6,6 +6,13 @@
       <ProductHeader />
       <Swiper :msg="swiperImages"/>
       <Goodsview :goodsview="goodsview"/>
+      <div class="goodsCellWrap">
+        <GoodsCell
+        v-for="(goodsCell, index) in goodsCell"
+        :key="index"
+        :goodsCell="goodsCell"
+        />
+      </div>
       <GoodsAction />
     </template>
   </div>
@@ -16,6 +23,7 @@ import Loading from '@/components/Loading.vue'
 import Swiper from '@/components/Swiper.vue'
 import ProductHeader from '@/components/product/ProductHeader.vue'
 import Goodsview from '@/components/product/Goodsview.vue'
+import GoodsCell from '@/components/product/GoodsCell.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
@@ -24,7 +32,8 @@ export default {
     return {
       loading: true,
       swiperImages: null,
-      goodsview: null
+      goodsview: null,
+      goodsCell: null
     }
   },
   components: {
@@ -32,6 +41,7 @@ export default {
     Swiper,
     ProductHeader,
     Goodsview,
+    GoodsCell,
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {
@@ -49,6 +59,7 @@ export default {
       this.$fetch('product').then((res) => {
         this.swiperImages = res.data.swiperImages
         this.goodsview = res.data.overview
+        this.goodsCell = res.data.goodsCell
         this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
@@ -62,6 +73,13 @@ export default {
 <style scoped>
 .product .isFooter {
   margin-top: 50px!important;
+}
+.product {
+  margin-bottom: 50px;
+  background-color: #efefef;
+}
+.product .goodsCell:first-child {
+  margin-bottom: 4px;
 }
 </style>
 <style>

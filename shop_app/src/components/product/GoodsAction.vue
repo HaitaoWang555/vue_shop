@@ -42,9 +42,13 @@ export default {
 <style scoped>
 .van-goods-action {
   justify-content: space-between;
+  background: white;
 }
 .van-goods-action-big-btn {
   max-width: 224px;
   background-color: #ff6700;
+}
+.van-goods-action-mini-btn {
+  min-width: 20%;
 }
 </style>
