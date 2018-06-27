@@ -8,3 +8,5 @@
   2. DOMPurify 防止XSS攻击
 ### goodsCell组件
   1. 商品信息Cell goodsCell 接受 父组件数据
+### GoodsServe组件
+  1. 售后服务组件 GoodsServe 接受 父组件数据
