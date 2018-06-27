@@ -32,6 +32,7 @@
     "postcss-url": "^7.3.2",
     "postcss-viewport-units": "^0.1.4",
     "postcss-write-svg": "^3.0.1",
+    "vue-lazyload": "^1.2.6",
     "vue-template-compiler": "^2.5.16"
   },
   "browserslist": [
