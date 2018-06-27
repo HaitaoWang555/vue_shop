@@ -89,6 +89,7 @@ export default {
 .product .goodsServeWrap {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   padding: 10px 0;
   background-color: white;
 }

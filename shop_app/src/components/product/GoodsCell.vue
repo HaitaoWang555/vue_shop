@@ -38,7 +38,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 15px;
   padding: 8px 0;
 }
 .goodsCell:first-child .goodsCellCentent {
@@ -60,8 +60,8 @@ export default {
   display: flex;
   justify-content: flex-start;
   color: rgba(0,0,0,.87);
-  height: 18px;
-  line-height: 18px;
+  height: 20px;
+  line-height: 20px;
 }
 .value::after {
   content: '';
