@@ -2,7 +2,7 @@
 <template>
   <p class="goodsServe">
     <van-icon name="passed" color="#fcad7d" />
-    <span>{{goodsServe.centent}}</span>
+    <span>{{centent}}</span>
   </p>
 </template>
 
@@ -10,7 +10,7 @@
 export default {
   name: 'goodsServe',
   props: {
-    goodsServe: {
+    centent: {
       default: null
     }
   },

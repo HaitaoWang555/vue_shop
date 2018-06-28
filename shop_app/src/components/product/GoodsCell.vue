@@ -2,11 +2,11 @@
 <template>
   <div class="goodsCell">
     <div class="goodsCellCentent">
-      <div class="title">{{goodsCell.title}}</div>
+      <div class="title">{{title}}</div>
       <div class="value">
-        <div class="tag" v-if="goodsCell.value.tag">{{goodsCell.value.tag}}</div>
-        <div class="content">{{goodsCell.value.content}}</div>
-        <div class="sign" v-if="goodsCell.value.sign">{{goodsCell.value.sign}}</div>
+        <div class="tag" v-if="tag">{{tag}}</div>
+        <div class="content">{{content}}</div>
+        <div class="sign" v-if="sign">{{sign}}</div>
       </div>
     </div>
   </div>
@@ -16,7 +16,16 @@
 export default {
   name: 'goodsCell',
   props: {
-    goodsCell: {
+    title: {
+      default: null
+    },
+    tag: {
+      default: null
+    },
+    content: {
+      default: null
+    },
+    sign: {
       default: null
     }
   },

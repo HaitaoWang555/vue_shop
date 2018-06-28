@@ -7,6 +7,8 @@
   1. 商品信息展示 goodsview 接受 父组件数据
   2. DOMPurify 防止XSS攻击
 ### goodsCell组件
-  1. 商品信息Cell goodsCell 接受 父组件数据
+  1. 商品信息Cell title tag content sign 接受 父组件数据
 ### GoodsServe组件
-  1. 售后服务组件 GoodsServe 接受 父组件数据
+  1. 售后服务组件 content 接受 父组件数据
+### GoodsComment 
+  1. 商品评论组件 接受父组件传数据 

@@ -10,16 +10,30 @@
         <GoodsCell
         v-for="(goodsCell, index) in pruductData.goodsCell"
         :key="index"
-        :goodsCell="goodsCell"
+        :title="goodsCell.title"
+        :tag="goodsCell.value.tag"
+        :content="goodsCell.value.content"
+        :sign="goodsCell.value.sign"
         />
       </div>
       <div class="goodsServeWrap">
         <GoodsServe
           v-for="(goodsServe, index) in pruductData.goodsServe"
           :key="index"
-          :goodsServe="goodsServe"
+          :centent="goodsServe.centent"
         />
       </div>
+      <GoodsComment
+        :commentsTotal="goodsCommentDetail.comments_total"
+        :satisfyPer="goodsCommentDetail.satisfy_per"
+        :commentsBad="goodsCommentDetail.comments_bad"
+        :userName="goodsCommentList.user_name"
+        :userAvatar="goodsCommentList.user_avatar"
+        :addTime="goodsCommentList.add_time"
+        :commentContent="goodsCommentList.comment_content"
+        :commentImages="goodsCommentList.comment_full_images"
+        :replyContent="goodsCommentList.reply_content"
+      />
       <GoodsAction />
     </template>
   </div>
@@ -32,6 +46,7 @@ import ProductHeader from '@/components/product/ProductHeader.vue'
 import Goodsview from '@/components/product/Goodsview.vue'
 import GoodsCell from '@/components/product/GoodsCell.vue'
 import GoodsServe from '@/components/product/GoodsServe.vue'
+import GoodsComment from '@/components/product/GoodsComment.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
@@ -39,7 +54,9 @@ export default {
   data () {
     return {
       loading: true,
-      pruductData: null
+      pruductData: null,
+      goodsCommentDetail: null,
+      goodsCommentList: null
     }
   },
   components: {
@@ -49,6 +66,7 @@ export default {
     Goodsview,
     GoodsCell,
     GoodsServe,
+    GoodsComment,
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {
@@ -65,6 +83,8 @@ export default {
     getProduct () {
       this.$fetch('product').then((res) => {
         this.pruductData = res.data
+        this.goodsCommentDetail = this.pruductData.goodsComment.detail
+        this.goodsCommentList = this.pruductData.goodsComment.list[0]
         this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
@@ -92,6 +112,10 @@ export default {
   flex-wrap: wrap;
   padding: 10px 0;
   background-color: white;
+}
+.goodsComment {
+  background-color: white;
+  margin-top: 8px;
 }
 </style>
 <style>
