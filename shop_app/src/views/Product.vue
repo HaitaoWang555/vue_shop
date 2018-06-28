@@ -34,6 +34,7 @@
         :commentImages="goodsCommentList.comment_full_images"
         :replyContent="goodsCommentList.reply_content"
       />
+      <GoodsDescription :goodsDescription="goodsDescription" />
       <GoodsAction />
     </template>
   </div>
@@ -47,6 +48,7 @@ import Goodsview from '@/components/product/Goodsview.vue'
 import GoodsCell from '@/components/product/GoodsCell.vue'
 import GoodsServe from '@/components/product/GoodsServe.vue'
 import GoodsComment from '@/components/product/GoodsComment.vue'
+import GoodsDescription from '@/components/product/GoodsDescription.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
@@ -59,6 +61,7 @@ export default {
       goodsCell: null,
       pruductData: null,
       goodsCommentDetail: null,
+      goodsDescription: null,
       goodsCommentList: null
     }
   },
@@ -70,6 +73,7 @@ export default {
     GoodsCell,
     GoodsServe,
     GoodsComment,
+    GoodsDescription,
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {
@@ -91,6 +95,7 @@ export default {
         this.goodsCell = this.pruductData.goodsCell
         this.goodsCommentDetail = this.pruductData.goodsComment.detail
         this.goodsCommentList = this.pruductData.goodsComment.list[0]
+        this.goodsDescription = this.pruductData.goodsDescription
         this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
