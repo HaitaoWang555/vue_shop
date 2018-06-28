@@ -4,11 +4,11 @@
     <Loading class="isFooter" v-if="loading" />
     <template  v-if="!loading">
       <ProductHeader />
-      <Swiper :msg="pruductData.swiperImages"/>
-      <Goodsview :goodsview="pruductData.goodsview"/>
+      <Swiper :msg="swiperImages"/>
+      <Goodsview :goodsview="goodsview"/>
       <div class="goodsCellWrap">
         <GoodsCell
-        v-for="(goodsCell, index) in pruductData.goodsCell"
+        v-for="(goodsCell, index) in goodsCell"
         :key="index"
         :title="goodsCell.title"
         :tag="goodsCell.value.tag"
@@ -54,6 +54,9 @@ export default {
   data () {
     return {
       loading: true,
+      swiperImages: null,
+      goodsview: null,
+      goodsCell: null,
       pruductData: null,
       goodsCommentDetail: null,
       goodsCommentList: null
@@ -83,6 +86,9 @@ export default {
     getProduct () {
       this.$fetch('product').then((res) => {
         this.pruductData = res.data
+        this.swiperImages = this.pruductData.swiperImages
+        this.goodsview = this.pruductData.goodsview
+        this.goodsCell = this.pruductData.goodsCell
         this.goodsCommentDetail = this.pruductData.goodsComment.detail
         this.goodsCommentList = this.pruductData.goodsComment.list[0]
         this.loading = false
