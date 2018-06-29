@@ -34,7 +34,10 @@
         :commentImages="goodsCommentList.comment_full_images"
         :replyContent="goodsCommentList.reply_content"
       />
-      <GoodsDescription :goodsDescription="goodsDescription" />
+      <GoodsDescription
+        :allDec="allDec"
+        :partDec="partDec"
+      />
       <GoodsAction />
     </template>
   </div>
@@ -62,6 +65,8 @@ export default {
       pruductData: null,
       goodsCommentDetail: null,
       goodsDescription: null,
+      allDec: null,
+      partDec: null,
       goodsCommentList: null
     }
   },
@@ -90,17 +95,27 @@ export default {
     getProduct () {
       this.$fetch('product').then((res) => {
         this.pruductData = res.data
+        this.allDec = JSON.parse(JSON.stringify(this.pruductData.goodsDescription))
+        this.goodsDescription = this.pruductData.goodsDescription
+        this.partDec = this.setallDec(this.goodsDescription)
         this.swiperImages = this.pruductData.swiperImages
         this.goodsview = this.pruductData.goodsview
         this.goodsCell = this.pruductData.goodsCell
         this.goodsCommentDetail = this.pruductData.goodsComment.detail
         this.goodsCommentList = this.pruductData.goodsComment.list[0]
-        this.goodsDescription = this.pruductData.goodsDescription
         this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
         console.log(err)
       })
+    },
+    setallDec (data) {
+      data.forEach(item => {
+        if (item.tabContent.length > 3) {
+          item.tabContent = item.tabContent.slice(0, 3)
+        }
+      })
+      return data
     }
   }
 }

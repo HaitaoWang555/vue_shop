@@ -12,3 +12,5 @@
   1. 售后服务组件 content 接受 父组件数据
 ### GoodsComment 
   1. 商品评论组件 接受父组件传数据 
+### GoodsDescription
+  1. 商品详情组件 接受两组数据，做图片数量切换

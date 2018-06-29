@@ -1,20 +1,20 @@
 /* goodsDescription vue组件 */
 <template>
   <div class="description">
-    <van-tabs>
-      <van-tab
-      v-for="(des, index) in goodsDescription"
-      :key="index"
-      :title="des.name"
-      >
-        <img
-          v-for="(data, index) in des.tabContent"
-          :key="index"
-          v-lazy="data.plainView.img"
+      <van-tabs>
+        <van-tab
+        v-for="(des, index) in data"
+        :key="index"
+        :title="des.name"
         >
-      </van-tab>
-    </van-tabs>
-    <div class="seeAll">查看全部图文详情 ></div>
+          <img
+            v-for="(data, index) in des.tabContent"
+            :key="index"
+            v-lazy="data.plainView.img"
+          >
+        </van-tab>
+      </van-tabs>
+    <div class="seeAll" v-if="isAllShow" @click="changeShow">查看全部图文详情 ></div>
   </div>
 </template>
 
@@ -25,20 +25,27 @@ Vue.use(Tab).use(Tabs)
 export default {
   name: 'description',
   props: {
-    goodsDescription: {
+    allDec: {
+      default: null
+    },
+    partDec: {
       default: null
     }
   },
   data () {
     return {
+      isAllShow: true,
+      data: null
     }
   },
   created () {
-  },
-  components: {
-
+    this.data = this.partDec
   },
   methods: {
+    changeShow () {
+      this.data = this.allDec
+      this.isAllShow = false
+    }
   }
 }
 </script>
