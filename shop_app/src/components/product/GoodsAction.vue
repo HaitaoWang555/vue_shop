@@ -43,6 +43,7 @@ export default {
 .van-goods-action {
   justify-content: space-between;
   background: white;
+  z-index: 999;
 }
 .van-goods-action-big-btn {
   max-width: 224px;

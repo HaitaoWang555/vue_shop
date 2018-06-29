@@ -38,6 +38,10 @@
         :allDec="allDec"
         :partDec="partDec"
       />
+      <Recommend
+        :title="recommend.title"
+        :recommendList="recommend.recommend_list"
+      />
       <GoodsAction />
     </template>
   </div>
@@ -52,6 +56,7 @@ import GoodsCell from '@/components/product/GoodsCell.vue'
 import GoodsServe from '@/components/product/GoodsServe.vue'
 import GoodsComment from '@/components/product/GoodsComment.vue'
 import GoodsDescription from '@/components/product/GoodsDescription.vue'
+import Recommend from '@/components/product/Recommend.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
@@ -67,7 +72,8 @@ export default {
       goodsDescription: null,
       allDec: null,
       partDec: null,
-      goodsCommentList: null
+      goodsCommentList: null,
+      recommend: null
     }
   },
   components: {
@@ -79,6 +85,7 @@ export default {
     GoodsServe,
     GoodsComment,
     GoodsDescription,
+    Recommend,
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {
@@ -103,6 +110,7 @@ export default {
         this.goodsCell = this.pruductData.goodsCell
         this.goodsCommentDetail = this.pruductData.goodsComment.detail
         this.goodsCommentList = this.pruductData.goodsComment.list[0]
+        this.recommend = this.pruductData.recommend
         this.loading = false
         this.$NProgress.done()
       }).catch((err) => {
