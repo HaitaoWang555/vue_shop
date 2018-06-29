@@ -12,6 +12,7 @@
         :key="index"
         :title="goodsCell.title"
         :tag="goodsCell.value.tag"
+        :to="goodsCell.value.to"
         :content="goodsCell.value.content"
         :sign="goodsCell.value.sign"
         />
@@ -42,6 +43,7 @@
         :title="recommend.title"
         :recommendList="recommend.recommend_list"
       />
+      <Sku />
       <GoodsAction />
     </template>
   </div>
@@ -57,6 +59,7 @@ import GoodsServe from '@/components/product/GoodsServe.vue'
 import GoodsComment from '@/components/product/GoodsComment.vue'
 import GoodsDescription from '@/components/product/GoodsDescription.vue'
 import Recommend from '@/components/product/Recommend.vue'
+import Sku from '@/components/product/Sku.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
@@ -86,6 +89,7 @@ export default {
     GoodsComment,
     GoodsDescription,
     Recommend,
+    Sku,
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {

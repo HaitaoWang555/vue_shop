@@ -1,6 +1,6 @@
 /* GoodsCell vue组件 */
 <template>
-  <div class="goodsCell">
+  <div class="goodsCell" @click="isSkuShow(to)">
     <div class="goodsCellCentent">
       <div class="title">{{title}}</div>
       <div class="value">
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import bus from '@/bus.js'
 export default {
   name: 'goodsCell',
   props: {
@@ -27,13 +28,22 @@ export default {
     },
     sign: {
       default: null
+    },
+    to: {
+      default: null
     }
   },
   components: {
 
   },
   methods: {
-
+    isSkuShow (to) {
+      if (to === 'sku') {
+        bus.$emit('isSkuShow', true)
+      } else if (to === 'gift') {
+        console.log(1)
+      }
+    }
   }
 }
 </script>

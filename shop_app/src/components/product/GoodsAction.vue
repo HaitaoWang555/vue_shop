@@ -14,6 +14,7 @@ import {
   GoodsActionMiniBtn
 } from 'vant'
 import Vue from 'vue'
+import bus from '@/bus.js'
 Vue.use(GoodsAction)
   .use(GoodsActionBigBtn)
   .use(GoodsActionMiniBtn)
@@ -33,7 +34,7 @@ export default {
       console.log('点击图标')
     },
     onClickBigBtn () {
-      console.log('点击按钮')
+      bus.$emit('isSkuShow', true)
     }
   }
 }
