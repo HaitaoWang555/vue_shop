@@ -68,6 +68,8 @@ export default {
   min-width: 42px;
   text-align: left;
   color: rgba(0,0,0,.54);
+  height: 20px;
+  line-height: 20px;
 }
 .value {
   flex: 1;
