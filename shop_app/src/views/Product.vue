@@ -15,6 +15,7 @@
         :to="goodsCell.value.to"
         :content="goodsCell.value.content"
         :sign="goodsCell.value.sign"
+        :clickEvent="isPopupShow"
         />
       </div>
       <div class="goodsServeWrap">
@@ -43,6 +44,11 @@
         :title="recommend.title"
         :recommendList="recommend.recommend_list"
       />
+      <Popup
+        :title="popupTitle"
+        :tag="popupTag"
+        :content="popupContent"
+      />
       <Sku />
       <GoodsAction />
     </template>
@@ -59,6 +65,7 @@ import GoodsServe from '@/components/product/GoodsServe.vue'
 import GoodsComment from '@/components/product/GoodsComment.vue'
 import GoodsDescription from '@/components/product/GoodsDescription.vue'
 import Recommend from '@/components/product/Recommend.vue'
+import Popup from '@/components/Popup.vue'
 import Sku from '@/components/product/Sku.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
@@ -76,7 +83,10 @@ export default {
       allDec: null,
       partDec: null,
       goodsCommentList: null,
-      recommend: null
+      recommend: null,
+      popupTitle: null,
+      popupContent: null,
+      popupTag: null
     }
   },
   components: {
@@ -89,6 +99,7 @@ export default {
     GoodsComment,
     GoodsDescription,
     Recommend,
+    Popup,
     Sku,
     GoodsAction
   },
@@ -128,6 +139,14 @@ export default {
         }
       })
       return data
+    },
+    isPopupShow (to, tag, title, content) {
+      if (to === 'gift') {
+        this.popupTitle = title
+        this.popupContent = content
+        this.popupTag = tag
+        bus.$emit('isPopupShow', true)
+      }
     }
   }
 }
