@@ -147,6 +147,9 @@ export default {
         this.popupTag = tag
         bus.$emit('isPopupShow', true)
       }
+      if (to === 'sku') {
+        bus.$emit('isSkuShow', true)
+      }
     }
   }
 }

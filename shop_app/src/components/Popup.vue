@@ -3,8 +3,8 @@
   <van-popup v-model="isPopupShow" position="bottom" >
     <div class="popup">
       <van-icon name="close" @click="close"/>
-      <h2>{{title}}</h2>
-      <div class="value"><div class="tag">{{tag}}</div><div class="content">{{content}}</div></div>
+      <h2 v-if="title">{{title}}</h2>
+      <div v-if="content" class="value"><div class="tag">{{tag}}</div><div class="content">{{content}}</div></div>
     </div>
   </van-popup>
 </template>
