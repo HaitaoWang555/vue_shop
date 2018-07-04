@@ -38,14 +38,13 @@
           />
         </div>
         <div class="serve">
-          <div class="title">保障服务<a href="javascript:;"><van-icon name="question"/></a><span>手机意外摔落/进水/碾压等损坏</span></div>
-          <div class="content">意外保障服务  179元</div>
+          <div class="title">保障服务<a href="javascript:;"><van-icon name="question"/></a><span v-show="choose">手机意外摔落/进水/碾压等损坏</span></div>
+          <div class="content" :class="{'active':choose}" @click="readServe">意外保障服务  179元</div>
           <div class="agree">
-            <div v-if="choose" class="choose"><van-icon name="check"/></div>
-            <div v-if="!choose" class="choose"><van-icon name="checked" color="#fd5723"/></div>
+            <van-icon v-if="!choose" name="check" @click="readServe"/>
+            <van-icon  v-if="choose" name="checked" color="#fd5723" @click="readServe"/>
             <span>我已阅读</span>
-            <a href="">服务条款 | </a>
-            <a href="">常见问题</a>
+            <a href="">服务条款 | </a><a href="">常见问题</a>
           </div>
         </div>
       </div>
@@ -92,6 +91,9 @@ export default {
           item.isOn = false
         }
       })
+    },
+    readServe () {
+      this.choose = !this.choose
     }
   }
 }
@@ -164,7 +166,8 @@ export default {
   margin-left: 8.3px;
   font-size: 12px;
 }
-.version li.active {
+.active {
+  border-color: #ff6700!important;
   color: #ff6700;
 }
 .skuContent .stepper {
@@ -194,6 +197,29 @@ export default {
 }
 .serve .title span{
   font-size: 14px;
+}
+.serve .content{
+  border: 1px solid rgba(0,0,0,.15);
+  max-width: 160px;
+  line-height: 37px;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+.serve .agree {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.serve .agree i{
+  font-size: 16px;
+  margin-right: 5px;
+}
+.serve .agree a {
+  color: #ff6700;
+  margin-right: 5px;
 }
 /* addCart */
 .addCart {
