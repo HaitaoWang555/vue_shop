@@ -4,10 +4,10 @@
     <div class="skuWrap">
       <van-icon name="close" class="close"  @click="close"/>
       <div class="goods">
-        <div class="imgWrap"><img src="//i8.mifile.cn/a1/pms_1524621084.0039673!720x7200.jpg"></div>
+        <div class="imgWrap"><img :src="selectedGood.img_url"></div>
         <div class="content">
-          <div class="goodsPrice"><van-icon name="balance-pay" color="rgb(255, 103, 0)"/><div class="curPrice">1599</div></div>
-          <div class="goodsName">小米6X 4GB+64GB 流沙金</div>
+          <div class="goodsPrice"><van-icon name="balance-pay" color="rgb(255, 103, 0)"/><div class="curPrice">{{selectedGood.price}}</div></div>
+          <div class="goodsName">{{selectedGood.name}}</div>
         </div>
       </div>
       <div class="skuContent">
@@ -19,7 +19,7 @@
           <ul>
             <li
               v-for="(list,index) in buyOption.list"
-              :key="index"
+              :key="list.prop_value_id"
               :class="{ 'active': list.isOn, 'maxWidth': list.price}"
               @click="changeChoose(buyOption,index)"
             >
@@ -37,14 +37,40 @@
             :max="3"
           />
         </div>
-        <div class="serve">
-          <div class="title">保障服务<a href="javascript:;"><van-icon name="question"/></a><span v-show="choose">手机意外摔落/进水/碾压等损坏</span></div>
-          <div class="content" :class="{'active':choose}" @click="readServe">意外保障服务  179元</div>
-          <div class="agree">
-            <van-icon v-if="!choose" name="check" @click="readServe"/>
-            <van-icon  v-if="choose" name="checked" color="#fd5723" @click="readServe"/>
-            <span>我已阅读</span>
-            <a href="">服务条款 | </a><a href="">常见问题</a>
+        <div class="serve"
+          v-for="(serve) in selectedGood.service_bargins"
+          :key="serve.type_name"
+        >
+          <div class="title">
+            {{serve.type_name}}
+            <a :href="serve.service_url"><van-icon name="question"/></a>
+            <span v-show="choose"
+              v-for="(serveInfo) in serve.service_info"
+              :key="serveInfo.service_goods_id"
+            >
+            {{serveInfo.service_desc}}
+            </span>
+          </div>
+          <div
+            v-for="(serveInfo) in serve.service_info"
+            :key="serveInfo.phone_accidentIns_sku"
+            @click="readServe"
+          >
+            <div class="content"
+              :class="{'active':choose}"
+            >
+            {{serveInfo.service_short_name}}{{serveInfo.service_price}}
+            </div>
+            <div class="agree">
+              <van-icon v-show="!choose" name="check" click="readServe"/>
+              <van-icon  v-show="choose" name="checked" color="#fd5723" click="readServe"/>
+              <span>我已阅读</span>
+              <a
+                v-for="(acc) in serveInfo.phone_accidentIns"
+                :key="acc.url"
+                :href="acc.url">{{acc.desc}}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -69,6 +95,8 @@ export default {
       isSkuShow: false,
       goodsNum: 1,
       goodsId,
+      selectedGood: null,
+      selectedSKU: [],
       buyOption,
       goodsInfo,
       choose: true
@@ -78,18 +106,40 @@ export default {
     bus.$on('isSkuShow', (val) => {
       this.isSkuShow = val
     })
+    this.initData()
   },
   methods: {
+    initData () {
+      this.selectedGood = this.goodsInfo.find(item => {
+        return item.goods_id === goodsId
+      })
+      this.selectedSKU = JSON.parse(JSON.stringify(this.selectedGood.prop_list))
+      this.buyOption.forEach((item, i) => {
+        let skuId = this.selectedGood.prop_list[i].prop_value_id
+        item.list.forEach((list, i) => {
+          if (skuId === list.prop_value_id) {
+            list.isOn = true
+          }
+        })
+      })
+    },
     close () {
       this.isSkuShow = false
     },
     changeChoose (buyOption, index) {
+      let curSKUIndex = this.selectedSKU.findIndex(item => {
+        return item.prop_cfg_id === buyOption.prop_cfg_id
+      })
       buyOption.list.forEach((item, i) => {
         if (i === index) {
           item.isOn = true
+          this.selectedSKU[curSKUIndex].prop_value_id = item.prop_value_id
         } else {
           item.isOn = false
         }
+      })
+      this.selectedGood = this.goodsInfo.find(item => {
+        return JSON.stringify(item.prop_list) === JSON.stringify(this.selectedSKU)
       })
     },
     readServe () {
@@ -219,7 +269,11 @@ export default {
 }
 .serve .agree a {
   color: #ff6700;
-  margin-right: 5px;
+  padding: 0 5px;
+  border-right: 1px solid;
+}
+.serve .agree a:last-child {
+  border-right: none;
 }
 /* addCart */
 .addCart {
