@@ -1,4 +1,9 @@
 /* Sku vue组件 */
+/*
+未完成功能
+1. 关闭更新产品页 GoodsCell、GoodsServe、Goodsview、数据
+2. 加入购物车
+*/
 <template>
   <van-popup v-model="isSkuShow" position="bottom" >
     <div class="skuWrap">
@@ -141,6 +146,7 @@ export default {
       this.selectedGood = this.goodsInfo.find(item => {
         return JSON.stringify(item.prop_list) === JSON.stringify(this.selectedSKU)
       })
+      this.goodsId = this.selectedGood.goods_id
     },
     readServe () {
       this.choose = !this.choose

@@ -1,7 +1,7 @@
 /* swiper vue组件 */
 <template>
   <div class="swipWrap">
-    <van-swipe :autoplay="3000">
+    <van-swipe>
       <van-swipe-item v-for="(images, index) in msg" :key="index">
           <img v-lazy="images.image" :key="images.image"/>
       </van-swipe-item>

@@ -16,3 +16,5 @@
   1. 商品详情组件 接受两组数据，做图片数量切换
 ### Recommend
   1. 商品推荐组件
+### Sku
+  1.  `isSkuShow` sku开启与关闭 `goodsNum` 购买产品数量 `goodsId` 选中的产品ID`selectedGood` 选中的产品相关信息`selectedSKU` 选中产品SKU`choose`服务选择
