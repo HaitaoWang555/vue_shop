@@ -22,6 +22,9 @@ Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
   document.querySelector('#app').scrollTop = 0
+  if (to.name) {
+    document.title = to.meta.title
+  }
   next()
 })
 

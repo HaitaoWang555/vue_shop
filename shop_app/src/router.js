@@ -20,6 +20,7 @@ const router = new Router({
       name: 'Home',
       component: Home,
       meta: {
+        title: '首页',
         index: 0
       }
     },
@@ -28,6 +29,7 @@ const router = new Router({
       name: 'Category',
       component: Category,
       meta: {
+        title: '分类页',
         index: 1
       }
     },
@@ -36,6 +38,7 @@ const router = new Router({
       name: 'Cart',
       component: Cart,
       meta: {
+        title: '购物车',
         index: 2
       }
     },
@@ -44,6 +47,7 @@ const router = new Router({
       name: 'User',
       component: User,
       meta: {
+        title: '个人中心',
         index: 3
       }
     },
@@ -52,13 +56,18 @@ const router = new Router({
       name: 'login',
       component: Login,
       meta: {
+        title: '登录页',
         index: 4
       }
     },
     {
       path: '/product/:id',
       name: 'product',
-      component: Product
+      component: Product,
+      meta: {
+        title: '产品页',
+        index: 5
+      }
     }
   ]
 })
