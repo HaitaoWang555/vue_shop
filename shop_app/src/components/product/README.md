@@ -18,3 +18,5 @@
   1. 商品推荐组件
 ### Sku
   1.  `isSkuShow` sku开启与关闭 `goodsNum` 购买产品数量 `goodsId` 选中的产品ID`selectedGood` 选中的产品相关信息`selectedSKU` 选中产品SKU`choose`服务选择
+### SkuServe
+  1. SKU 服务组件 接受serviceBargins数据渲染组件 向外传递 choose 告知是否选择

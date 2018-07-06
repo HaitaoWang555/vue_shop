@@ -42,42 +42,7 @@
             :max="3"
           />
         </div>
-        <div class="serve"
-          v-for="(serve) in selectedGood.service_bargins"
-          :key="serve.type_name"
-        >
-          <div class="title">
-            {{serve.type_name}}
-            <a :href="serve.service_url"><van-icon name="question"/></a>
-            <span v-show="choose"
-              v-for="(serveInfo) in serve.service_info"
-              :key="serveInfo.service_goods_id"
-            >
-            {{serveInfo.service_desc}}
-            </span>
-          </div>
-          <div
-            v-for="(serveInfo) in serve.service_info"
-            :key="serveInfo.phone_accidentIns_sku"
-            @click="readServe"
-          >
-            <div class="content"
-              :class="{'active':choose}"
-            >
-            {{serveInfo.service_short_name}}{{serveInfo.service_price}}
-            </div>
-            <div class="agree">
-              <van-icon v-show="!choose" name="check" click="readServe"/>
-              <van-icon  v-show="choose" name="checked" color="#fd5723" click="readServe"/>
-              <span>我已阅读</span>
-              <a
-                v-for="(acc) in serveInfo.phone_accidentIns"
-                :key="acc.url"
-                :href="acc.url">{{acc.desc}}
-              </a>
-            </div>
-          </div>
-        </div>
+        <SkuServe :serviceBargins="selectedGood.service_bargins"/>
       </div>
     </div>
     <div class="addCart">加入购物车</div>
@@ -86,14 +51,15 @@
 
 <script>
 import Vue from 'vue'
+import SkuServe from '@/components/product/SkuServe.vue'
 import { goodsId, buyOption, goodsInfo } from '@/components/product/sku.js'
 import { Stepper, Popup } from 'vant'
 import bus from '@/bus.js'
 Vue.use(Popup).use(Stepper)
 export default {
   name: 'sku',
-  props: {
-
+  components: {
+    SkuServe
   },
   data () {
     return {
@@ -103,8 +69,7 @@ export default {
       selectedGood: null,
       selectedSKU: [],
       buyOption,
-      goodsInfo,
-      choose: true
+      goodsInfo
     }
   },
   created () {
@@ -232,54 +197,6 @@ export default {
   align-items: center;
   padding: 16.67px 0;
   font-size: 14px;
-}
-/* serve */
-.serve {
-  padding: 16.67px 0;
-}
-.serve .title {
-  text-align: left;
-  font-size: 14px;
-  margin-bottom: 8.3px;
-}
-.serve .title a ,
-.serve .title span{
-  font-size: 13px;
-  margin-left: 5px;
-  color: rgba(0,0,0,.54);
-}
-.serve .title a {
-  vertical-align: middle;
-}
-.serve .title span{
-  font-size: 14px;
-}
-.serve .content{
-  border: 1px solid rgba(0,0,0,.15);
-  max-width: 160px;
-  line-height: 37px;
-  font-size: 12px;
-  margin-left: 10px;
-  margin-top: 15px;
-}
-.serve .agree {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-.serve .agree i{
-  font-size: 16px;
-  margin-right: 5px;
-}
-.serve .agree a {
-  color: #ff6700;
-  padding: 0 5px;
-  border-right: 1px solid;
-}
-.serve .agree a:last-child {
-  border-right: none;
 }
 /* addCart */
 .addCart {
