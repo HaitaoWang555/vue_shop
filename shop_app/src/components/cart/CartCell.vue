@@ -40,6 +40,7 @@
               <div class="imgWrap"><img :src="serveInfo.service_image_url"></div>
               <div class="contentWrap">
                 <p class="name">{{serveInfo.service_name}}</p>
+                <p class="price">售价：{{serveInfo.service_price}}元</p>
                 <div class="contral">
                   <van-stepper
                     v-model="serveInfo.num"
