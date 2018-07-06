@@ -10,7 +10,8 @@ const url = {
   around: '/vue_shop/around',
   tv: '/vue_shop/tv',
   category: '/vue_shop/category',
-  product: '/vue_shop/product'
+  product: '/vue_shop/product',
+  recommendList: '/vue_shop/recommendList'
 }
 
 Object.keys(url).forEach(key => {
