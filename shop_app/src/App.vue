@@ -83,4 +83,20 @@ export default {
 #nprogress .peg {
   box-shadow: 0 0 10px rgba(237, 91, 0, 0.5), 0 0 5px rgba(237, 91, 0, 0.5)!important;
 }
+/* popup */
+.popup {
+  min-height: 260px;
+  padding: 16px;
+  color: black;
+  position: relative;
+}
+.popup > i {
+  position: absolute;
+  right: 16px;
+}
+.popup h2 {
+  font-weight: normal;
+  font-size: 18px;
+  padding: 12.5px 0;
+}
 </style>

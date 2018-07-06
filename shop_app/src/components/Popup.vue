@@ -49,21 +49,6 @@ export default {
 </script>
 
 <style scoped>
-.popup {
-  min-height: 260px;
-  padding: 16px;
-  color: black;
-  position: relative;
-}
-.popup i {
-  position: absolute;
-  right: 16px;
-}
-h2 {
-  font-weight: normal;
-  font-size: 18px;
-  padding: 12.5px 0;
-}
 .value {
   position: relative;
   display: flex;
