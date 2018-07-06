@@ -108,13 +108,15 @@ let buyOption = [
 
 let goodsInfo = [
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "2",
     "commodity_id": 1181500027,
@@ -298,13 +300,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1182100060,
@@ -516,13 +520,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "2",
     "commodity_id": 1181500025,
@@ -706,13 +712,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500030,
@@ -896,13 +904,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500039,
@@ -1086,13 +1096,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1182100061,
@@ -1276,13 +1288,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "2",
     "commodity_id": 1181500026,
@@ -1474,13 +1488,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500031,
@@ -1664,13 +1680,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500040,
@@ -1854,13 +1872,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1182100062,
@@ -2044,13 +2064,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500032,
@@ -2234,13 +2256,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500041,
@@ -2424,13 +2448,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1182100063,
@@ -2614,13 +2640,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "2",
     "commodity_id": 1181500028,
@@ -2804,13 +2832,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500033,
@@ -2994,13 +3024,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500042,
@@ -3184,13 +3216,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1182100064,
@@ -3374,13 +3408,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "2",
     "commodity_id": 1181500029,
@@ -3564,13 +3600,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500034,
@@ -3754,13 +3792,15 @@ let goodsInfo = [
     "stock_channel": "3"
   },
   {
-    "action_button": {
-      "button_title": "加入购物车",
-      "is_bigtap": false,
-      "occ_timeout": 5000,
-      "sale_mode": "standard",
-      "use_occ": false
-    },
+    "actives": [
+      {
+        "type": "gift",
+        "type_desc": "赠品",
+        "title": "赠小米移动电源",
+        "active_id": "11110",
+        "imgUrl": "//i1.mifile.cn/a1/pms_1513948456.57461422.jpg"
+      }
+    ],
     "address_type": "common",
     "buy_limit": "1",
     "commodity_id": 1181500043,
