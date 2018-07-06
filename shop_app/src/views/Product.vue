@@ -41,6 +41,7 @@
         :partDec="partDec"
       />
       <Recommend
+        v-if="isRecommend"
         :title="recommend.title"
         :recommendList="recommend.recommend_list"
       />
@@ -84,6 +85,7 @@ export default {
       partDec: null,
       goodsCommentList: null,
       recommend: null,
+      isRecommend: false,
       popupTitle: null,
       popupContent: null,
       popupTag: null
@@ -125,10 +127,12 @@ export default {
         this.goodsCell = this.pruductData.goodsCell
         this.goodsCommentDetail = this.pruductData.goodsComment.detail
         this.goodsCommentList = this.pruductData.goodsComment.list[0]
-        this.recommend = this.pruductData.recommend
         this.loading = false
         this.$NProgress.done()
-      }).catch((err) => {
+      }).then(this.$fetch('recommendList').then((res) => {
+        this.recommend = res.data.recommend
+        this.isRecommend = true
+      })).catch((err) => {
         console.log(err)
       })
     },
