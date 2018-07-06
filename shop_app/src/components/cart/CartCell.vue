@@ -26,7 +26,34 @@
         </div>
         <div class="other"
           v-if="result[index].is_checked"
+          :class="{'isServe':isServe[index].is_checked}"
         >
+          <div
+            v-if="isServe[index].is_checked"
+            v-for="(servePruduct, i) in item.service_bargins"
+            :key="i+'servePruduct'"
+          >
+            <div class="servePruduct"
+              v-for="(serveInfo) in servePruduct.service_info"
+              :key="serveInfo.service_goods_id"
+            >
+              <div class="imgWrap"><img :src="serveInfo.service_image_url"></div>
+              <div class="contentWrap">
+                <p class="name">{{serveInfo.service_name}}</p>
+                <div class="contral">
+                  <van-stepper
+                    v-model="serveInfo.num"
+                    integer
+                    :min="1"
+                    :default-value="1"
+                    :max="item.num"
+                  />
+                  <van-icon name="delete" @click="hideServeProduct(index)"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="gift"
             v-if="item.actives"
             v-for="(active, index) in item.actives"
@@ -46,7 +73,7 @@
           </div>
         </div>
         <div
-          v-if="result[index].is_checked"
+          v-if="result[index].is_checked && !isServe[index].is_checked"
           v-for="(serve) in item.service_bargins"
           :key="serve.active_id"
         >
@@ -57,7 +84,7 @@
           >
             <img :src="serveInfo.service_image_url">
             <p class="name">{{serveInfo.service_short_name}} {{serveInfo.service_price}}</p>
-            <p class="checked" @click="choseServe(serve)">选购</p>
+            <p class="checked" @click="choseServe(serve, index)">选购</p>
           </div>
         </div>
       </li>
@@ -70,7 +97,7 @@
         <div class="footer">
           <div class="item text" v-if="!choose">请选择服务类型</div>
           <div class="item text" v-if="choose">已选择{{thisServe.length}}项服务</div>
-          <div class="item btn" @click="close">确定</div>
+          <div class="item btn" @click="showServeProduct">确定</div>
         </div>
       </div>
     </van-popup>
@@ -102,7 +129,9 @@ export default {
       result: [],
       isPopupShow: false,
       thisServe: [],
-      choose: false
+      choose: false,
+      isServe: [],
+      curIndex: null
     }
   },
   components: {
@@ -112,16 +141,24 @@ export default {
     initData () {
       for (let i = 0; i < productList.length; i++) {
         this.result.push({is_checked: productList[i].is_checked})
+        this.isServe.push({is_checked: false})
       }
     },
     close () {
       this.isPopupShow = false
     },
-    choseServe (serve) {
+    choseServe (serve, index) {
       this.thisServe = []
       this.isPopupShow = true
       this.thisServe.push(serve)
-      console.log(this.thisServe)
+      this.curIndex = index
+    },
+    showServeProduct () {
+      this.isPopupShow = false
+      this.isServe[this.curIndex].is_checked = true
+    },
+    hideServeProduct (index) {
+      this.isServe[index].is_checked = false
     }
   }
 }
@@ -155,12 +192,24 @@ li {
 .other {
   margin-top: 70px;
 }
+.other.isServe {
+  margin-top: 0;
+}
+.servePruduct,
 .gift {
   margin-left: 30px;
   margin-top: 10px;
 }
+.servePruduct {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.servePruduct .contentWrap,
 .gift .contentWrap {
   display: flex;
+  flex-grow: 1;
+  text-align: left;
   flex-direction: column;
   justify-content: center;
 }
