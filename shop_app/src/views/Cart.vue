@@ -32,10 +32,11 @@ import AppHeader from '@/components/AppHeader.vue'
 import CartCell from '@/components/cart/CartCell.vue'
 import Recommend from '@/components/product/Recommend.vue'
 import { Cell, CellGroup, Stepper, Popup } from 'vant'
+import bus from '@/bus.js'
 
 Vue.use(Cell).use(CellGroup)
 Vue.use(Popup).use(Stepper)
-// import bus from '@/bus.js'
+
 export default {
   name: 'cart',
   components: {
@@ -49,6 +50,9 @@ export default {
       loading: true,
       recommend: null
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(bus.$emit('loading', true))
   },
   created () {
     this.$NProgress.start()
