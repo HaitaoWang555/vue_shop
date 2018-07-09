@@ -1,21 +1,21 @@
-const host = 'https://www.easy-mock.com/mock/5b28c7283f9f7c0b22426d96'
+const host = 'http://pbdg9iawq.bkt.clouddn.com'
 
 const url = {
-  navList: '/vue_shop/navList',
-  recommend: '/vue_shop/recommend',
-  active: '/vue_shop/active',
-  mobile: '/vue_shop/mobile',
-  intelligence: '/vue_shop/intelligence',
-  computer: '/vue_shop/computer',
-  around: '/vue_shop/around',
-  tv: '/vue_shop/tv',
-  category: '/vue_shop/category',
-  product: '/vue_shop/product',
-  recommendList: '/vue_shop/recommendList'
+  navList: '/json/navList',
+  recommend: '/json/recommend',
+  active: '/json/active',
+  mobile: '/json/mobile',
+  intelligence: '/json/intelligence',
+  computer: '/json/computer',
+  around: '/json/around',
+  tv: '/json/tv',
+  category: '/json/category',
+  product: '/json/product',
+  recommendList: '/json/recommendList'
 }
 
 Object.keys(url).forEach(key => {
-  url[key] = host + url[key]
+  url[key] = host + url[key] + '.json'
 })
 
 export default url
