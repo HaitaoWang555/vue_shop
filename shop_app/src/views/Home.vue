@@ -71,6 +71,9 @@ export default {
       transitionName: ''
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next(bus.$emit('loading', false))
+  },
   created () {
     this.$NProgress.start()
     this.getNavList()
@@ -85,7 +88,6 @@ export default {
         this.moudle = res.data.list.templateName
         setTimeout(() => {
           this.loading = false
-          bus.$emit('loading', false)
           this.$NProgress.done()
         }, 1000)
       }).catch((err) => {
