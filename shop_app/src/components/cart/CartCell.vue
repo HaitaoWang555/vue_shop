@@ -20,7 +20,7 @@
                 :min="1"
                 :max="item.goodsNum"
               />
-              <van-icon name="delete" />
+              <van-icon name="delete" @click="delProduct(index)"/>
             </div>
           </div>
         </div>
@@ -160,6 +160,9 @@ export default {
     },
     hideServeProduct (index) {
       this.isServe[index].is_checked = false
+    },
+    delProduct (index) {
+      this.productList.splice(index, 1)
     }
   }
 }
