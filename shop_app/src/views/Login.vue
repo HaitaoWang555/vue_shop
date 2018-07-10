@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import bus from '@/bus.js'
 export default {
   created () {
     this.$NProgress.start()
@@ -59,6 +60,10 @@ export default {
       isGetCodeClicked: true,
       loginLoading: false
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    bus.$emit('loading', false)
+    next()
   },
   computed: {
     subBtn () {

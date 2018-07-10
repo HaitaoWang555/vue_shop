@@ -1,10 +1,12 @@
 /* User vue组件 */
 <template>
   <div class="user">
-    <header>
-      <div class="imgWrap"><img src="../assets/images/avatar.png"></div>
-      <div class="content">登录/注册</div>
-    </header>
+    <router-link to="/login">
+      <header>
+        <div class="imgWrap"><img src="../assets/images/avatar.png"></div>
+        <div class="content">登录/注册</div>
+      </header>
+    </router-link>
     <div class="userContent">
       <div class="order cell"><span>我的订单</span><span>全部订单</span></div>
       <ul class="tabrouter">

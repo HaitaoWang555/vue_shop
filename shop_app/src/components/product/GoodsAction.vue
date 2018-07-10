@@ -1,8 +1,8 @@
 /* GoodsAction vue组件 */
 <template>
   <van-goods-action>
-    <van-goods-action-mini-btn icon="wap-home" text="首页" @click="onClickMiniBtn" />
-    <van-goods-action-mini-btn icon="cart" text="购物车" @click="onClickMiniBtn" />
+    <van-goods-action-mini-btn to="/home" icon="wap-home" text="首页" @click="onClickMiniBtn" />
+    <van-goods-action-mini-btn to="/cart" icon="cart" text="购物车" @click="onClickMiniBtn" />
     <van-goods-action-big-btn text="加入购物车" @click="onClickBigBtn" />
   </van-goods-action>
 </template>

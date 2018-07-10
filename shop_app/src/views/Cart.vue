@@ -18,8 +18,8 @@
           <p>共{{productNum}}件 金额：</p>
           <p><span>{{productPrice}}</span>元</p>
         </div>
-        <div class="item goCategory">继续购物</div>
-        <div class="item goPlay">去结算</div>
+        <div class="item goCategory"><router-link to="/category">继续购物</router-link></div>
+        <div class="item goPlay"><router-link to="/login">去结算</router-link></div>
       </div>
     </template>
   </div>
