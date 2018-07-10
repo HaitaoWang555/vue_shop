@@ -32,6 +32,7 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
+    bus.$emit('loading', false)
     next(vm => {
       if (vm.loading) {
         vm.getCategory()
@@ -49,7 +50,6 @@ export default {
       setTimeout(() => {
         this.$NProgress.done()
         this.loading = false
-        bus.$emit('loading', false)
       }, 1000)
     },
     getCategory () {

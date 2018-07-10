@@ -35,7 +35,7 @@ export default {
     DividerLine
   },
   beforeRouteEnter (to, from, next) {
-    next(bus.$emit('loading', true))
+    next(bus.$emit('loading', false))
   },
   created () {
     this.$NProgress.start()
