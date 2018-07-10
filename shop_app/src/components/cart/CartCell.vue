@@ -43,10 +43,10 @@
                 <p class="price">售价：{{serveInfo.service_price}}元</p>
                 <div class="contral">
                   <van-stepper
-                    v-model="serveInfo.num"
+                    v-model="item.serveNum"
                     integer
                     :min="1"
-                    :default-value="1"
+                    :default-value="item.serveNum"
                     :max="item.num"
                   />
                   <van-icon name="delete" @click="hideServeProduct(index)"/>
@@ -124,24 +124,43 @@ export default {
       this.choose = val
     })
   },
+  components: {
+    SkuServe
+  },
   data () {
     return {
-      productList,
+      productList: null,
       result: [],
       isPopupShow: false,
       thisServe: [],
       choose: false,
       isServe: [],
-      curIndex: null
+      curIndex: null,
+      totalNum: 0
     }
   },
-  components: {
-    SkuServe
+  watch: {
+    productList: {
+      deep: true,
+      handler (val) {
+        let productNum = 0
+        val.forEach((item, i) => {
+          if (item.actives) {
+            productNum += (item.num * (item.actives.length + 1) + item.serveNum)
+          } else {
+            productNum += item.num
+          }
+        })
+        this.totalNum = productNum
+        bus.$emit('productNum', this.totalNum)
+      }
+    }
   },
   methods: {
     initData () {
-      for (let i = 0; i < productList.length; i++) {
-        this.result.push({is_checked: productList[i].is_checked})
+      this.productList = productList
+      for (let i = 0; i < this.productList.length; i++) {
+        this.result.push({is_checked: this.productList[i].is_checked})
         this.isServe.push({is_checked: false})
       }
     },
@@ -157,9 +176,11 @@ export default {
     showServeProduct () {
       this.isPopupShow = false
       this.isServe[this.curIndex].is_checked = true
+      this.productList[this.curIndex].serveNum = 1
     },
     hideServeProduct (index) {
       this.isServe[index].is_checked = false
+      this.productList[index].serveNum = 0
     },
     delProduct (index) {
       this.productList.splice(index, 1)

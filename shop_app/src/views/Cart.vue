@@ -15,7 +15,7 @@
       />
       <div class="footer">
         <div class="item showPrice">
-          <p>共8件 金额：</p>
+          <p>共{{productNum}}件 金额：</p>
           <p><span>8395</span>元</p>
         </div>
         <div class="item goCategory">继续购物</div>
@@ -48,7 +48,8 @@ export default {
   data () {
     return {
       loading: true,
-      recommend: null
+      recommend: null,
+      productNum: 0
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -57,6 +58,9 @@ export default {
   created () {
     this.$NProgress.start()
     this.getCart()
+    bus.$on('productNum', (val) => {
+      this.productNum = val
+    })
   },
   destroyed () {
     this.$NProgress.remove()
@@ -98,7 +102,7 @@ export default {
 }
 .footer .item {
   flex-grow: 1;
-  height: 52PX;
+  height: 52px;
   line-height: 52px;
   font-size: 15px;
 }

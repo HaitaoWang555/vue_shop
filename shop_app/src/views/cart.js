@@ -7,6 +7,7 @@ let productList = [
     "goodsNum": 2,
     "product_name": "小米6X 全网通版 6GB内存 128GB 冰川蓝 128GB",
     "salePrice": "1999",
+    "serveNum": 0,
     "service_bargins": [
       {
         "can_multi": true,
@@ -61,6 +62,7 @@ let productList = [
     "goodsNum": 2,
     "product_name": "小米6X 全网通版 6GB内存 128GB 冰川蓝 128GB",
     "salePrice": "1999",
+    "serveNum": 0,
     "service_bargins": [
       {
         "can_multi": true,
@@ -115,6 +117,7 @@ let productList = [
     "goodsNum": 2,
     "product_name": "小米6X 全网通版 6GB内存 128GB 冰川蓝 128GB",
     "salePrice": "1999",
+    "serveNum": 0,
     "service_bargins": [
       {
         "can_multi": true,
@@ -168,6 +171,7 @@ let productList = [
     "num": 1,
     "product_name": "小米6X 全网通版 6GB内存 128GB 冰川蓝 128GB",
     "salePrice": "1999",
+    "serveNum": 0,
     "service_bargins": [
       {
         "can_multi": true,
@@ -222,6 +226,7 @@ let productList = [
     "goodsNum": 2,
     "product_name": "小米6X 全网通版 6GB内存 128GB 冰川蓝 128GB",
     "salePrice": "1999",
+    "serveNum": 0,
     "service_bargins": [
       {
         "can_multi": true,
