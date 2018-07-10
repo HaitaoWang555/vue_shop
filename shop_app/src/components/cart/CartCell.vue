@@ -7,7 +7,7 @@
         :key="index"
       >
         <div class="cartItem">
-          <div class="checkWrap"><van-checkbox v-model="result[index].is_checked" /></div>
+          <div class="checkWrap"><van-checkbox v-model="item.is_checked" /></div>
           <div class="imgWrap"><img :src="item.image_url"></div>
           <div class="contentWrap">
             <p class="name">{{item.product_name}}</p>
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="other"
-          v-if="result[index].is_checked"
+          v-if="item.is_checked"
           :class="{'isServe':isServe[index].is_checked}"
         >
           <div
@@ -74,7 +74,7 @@
           </div>
         </div>
         <div
-          v-if="result[index].is_checked && !isServe[index].is_checked"
+          v-if="item.is_checked && !isServe[index].is_checked"
           v-for="(serve) in item.service_bargins"
           :key="serve.active_id"
         >
@@ -130,13 +130,13 @@ export default {
   data () {
     return {
       productList: null,
-      result: [],
       isPopupShow: false,
       thisServe: [],
       choose: false,
       isServe: [],
       curIndex: null,
-      totalNum: 0
+      totalNum: 0,
+      totalPrice: 0
     }
   },
   watch: {
@@ -144,15 +144,25 @@ export default {
       deep: true,
       handler (val) {
         let productNum = 0
+        let productPrice = 0
         val.forEach((item, i) => {
-          if (item.actives) {
-            productNum += (item.num * (item.actives.length + 1) + item.serveNum)
-          } else {
-            productNum += item.num
+          if (item.is_checked) {
+            if (item.actives) {
+              productNum += (item.num * (item.actives.length + 1) + item.serveNum)
+            } else {
+              productNum += item.num + item.serveNum
+            }
+            if (this.isServe[i].is_checked) {
+              productPrice += item.num * item.salePrice + item.serveNum * this.isServe[i].servePrice
+            } else {
+              productPrice += item.num * item.salePrice
+            }
           }
         })
         this.totalNum = productNum
+        this.totalPrice = productPrice
         bus.$emit('productNum', this.totalNum)
+        bus.$emit('productPrice', this.totalPrice)
       }
     }
   },
@@ -160,7 +170,6 @@ export default {
     initData () {
       this.productList = productList
       for (let i = 0; i < this.productList.length; i++) {
-        this.result.push({is_checked: this.productList[i].is_checked})
         this.isServe.push({is_checked: false})
       }
     },
@@ -171,6 +180,7 @@ export default {
       this.thisServe = []
       this.isPopupShow = true
       this.thisServe.push(serve)
+      this.isServe[index].servePrice = serve.service_info[0].service_price
       this.curIndex = index
     },
     showServeProduct () {

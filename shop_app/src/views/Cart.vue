@@ -16,7 +16,7 @@
       <div class="footer">
         <div class="item showPrice">
           <p>共{{productNum}}件 金额：</p>
-          <p><span>8395</span>元</p>
+          <p><span>{{productPrice}}</span>元</p>
         </div>
         <div class="item goCategory">继续购物</div>
         <div class="item goPlay">去结算</div>
@@ -49,7 +49,8 @@ export default {
     return {
       loading: true,
       recommend: null,
-      productNum: 0
+      productNum: 0,
+      productPrice: 0
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -60,6 +61,9 @@ export default {
     this.getCart()
     bus.$on('productNum', (val) => {
       this.productNum = val
+    })
+    bus.$on('productPrice', (val) => {
+      this.productPrice = val
     })
   },
   destroyed () {
