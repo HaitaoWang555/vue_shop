@@ -1,0 +1,126 @@
+.user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color:#f5f5f5;
+}
+header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: url(../../assets/images/userbg.png) center 0 #f37d0f;
+  background-size: auto 100%;
+  color: white;
+  padding: 17px 0;
+  font-size: 14px;
+}
+header .imgWrap {
+  width: 50px;
+  margin-left: 16px;
+  margin-right: 8px;
+  border-radius: 100%;
+  border: 3px solid hsla(0,0%,100%,.4);
+}
+header .imgWrap img {
+  width: 100%;
+}
+.order {
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.15);
+}
+.cell {
+  display: flex;
+  justify-content: flex-start;
+  height: 55px;
+  line-height: 55px;
+  position: relative;
+  font-size: 15px;
+}
+.cell::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 10px;
+  height: 10px;
+  border-left: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: translate3d(0,-50%,0) rotate(135deg);
+}
+.order.cell {
+  padding: 0 40px 0 20px;
+  justify-content: space-between;
+}
+.tabrouter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
+.tabrouter li{
+  margin: 20px 0;
+  font-size: 14px;
+}
+.tabrouter i {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto 8px;
+}
+.tabrouter i.dfk {
+  background: url(../../assets/images/pendpay.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.tabrouter i.dsh {
+  background: url(../../assets/images/dsh.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.tabrouter i.thx {
+  background: url(../../assets/images/thx.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.tabLink {
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tabLink i{
+  display: block;
+  width: 25px;
+  height: 25px;  
+  margin: 0 10px;
+}
+.tabLink .cell {
+  flex-grow: 1;
+}
+.member i{
+  background: url(../../assets/images/member.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.border-bottom {
+  border-bottom: 1px solid rgba(0,0,0,.15);
+}
+.wallet i{
+  background: url(../../assets/images/wallet.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.service i{
+  background: url(../../assets/images/serve.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.mihome i{
+  background: url(../../assets/images/mihome.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.fcode i{
+  background: url(../../assets/images/fcode.png) no-repeat center 0;
+  background-size: 100% auto;
+}
+.setting i{
+  background: url(../../assets/images/setting.png) no-repeat center 0;
+  background-size: 100% auto;
+}
