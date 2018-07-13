@@ -1,5 +1,5 @@
 /* eslint-disable */
-let goodsId = 2181500027
+let goodsId = 2181500026
 
 let buyOption = [
   {

@@ -1,9 +1,4 @@
 /* Sku vue组件 */
-/*
-未完成功能
-1. 关闭更新产品页 GoodsCell、GoodsServe、Goodsview、数据
-2. 加入购物车
-*/
 <template>
   <van-popup v-model="isSkuShow" position="bottom" >
     <div class="skuWrap">
@@ -43,9 +38,9 @@
           />
         </div>
         <SkuServe :serviceBargins="selectedGood.service_bargins"/>
+        <div class="addCart" @click="addCart(selectedGood.name, goodsNum, selectedGood.price)">加入购物车</div>
       </div>
     </div>
-    <div class="addCart">加入购物车</div>
   </van-popup>
 </template>
 
@@ -115,6 +110,12 @@ export default {
     },
     readServe () {
       this.choose = !this.choose
+    },
+    addCart (name, goodsNum, price) {
+      let Product = name + goodsNum
+      bus.$emit('changeProduct', Product)
+      bus.$emit('changeGoodsView', price)
+      this.isSkuShow = false
     }
   }
 }
@@ -200,6 +201,10 @@ export default {
 }
 /* addCart */
 .addCart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 52.08px;
   line-height: 52.08px;
   background: #ff6700;

@@ -157,6 +157,12 @@ export default {
       }
       if (to === 'sku') {
         bus.$emit('isSkuShow', true)
+        bus.$on('changeProduct', (val) => {
+          this.goodsCell[index].value.content = val
+        })
+        bus.$on('changeGoodsView', (val) => {
+          this.goodsview.goodsPrice = val
+        })
       }
       if (to === 'area') {
         bus.$emit('isAreaShow', true)
