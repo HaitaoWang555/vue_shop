@@ -1,3 +1,4 @@
+/* eslint-disable */
 let productList = [
   {
     "is_checked": true,
