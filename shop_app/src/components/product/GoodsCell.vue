@@ -1,6 +1,6 @@
 /* GoodsCell vue组件 */
 <template>
-  <div class="goodsCell" @click="clickEvent(to, tag, title, content)">
+  <div class="goodsCell" @click="clickEvent(to, tag, title, content, index)">
     <div class="goodsCellCentent">
       <div class="title">{{title}}</div>
       <div class="value">
@@ -29,6 +29,9 @@ export default {
       default: null
     },
     to: {
+      default: null
+    },
+    index: {
       default: null
     },
     clickEvent: {

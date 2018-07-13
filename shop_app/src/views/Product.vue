@@ -10,6 +10,7 @@
         <GoodsCell
         v-for="(goodsCell, index) in goodsCell"
         :key="index"
+        :index="index"
         :title="goodsCell.title"
         :tag="goodsCell.value.tag"
         :to="goodsCell.value.to"
@@ -51,6 +52,7 @@
         :content="popupContent"
       />
       <Sku />
+      <AreaSelect />
       <GoodsAction />
     </template>
   </div>
@@ -68,6 +70,7 @@ import GoodsDescription from '@/components/product/GoodsDescription.vue'
 import Recommend from '@/components/product/Recommend.vue'
 import Popup from '@/components/Popup.vue'
 import Sku from '@/components/product/Sku.vue'
+import AreaSelect from '@/components/product/AreaSelect.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
 import bus from '@/bus.js'
 export default {
@@ -103,6 +106,7 @@ export default {
     Recommend,
     Popup,
     Sku,
+    AreaSelect,
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {
@@ -144,7 +148,7 @@ export default {
       })
       return data
     },
-    isPopupShow (to, tag, title, content) {
+    isPopupShow (to, tag, title, content, index) {
       if (to === 'gift') {
         this.popupTitle = title
         this.popupContent = content
@@ -153,6 +157,15 @@ export default {
       }
       if (to === 'sku') {
         bus.$emit('isSkuShow', true)
+      }
+      if (to === 'area') {
+        bus.$emit('isAreaShow', true)
+        bus.$on('confirm', (val) => {
+          this.goodsCell[index].value.content = ''
+          val.forEach((item) => {
+            this.goodsCell[index].value.content += (item.name + ' ')
+          })
+        })
       }
     }
   }
