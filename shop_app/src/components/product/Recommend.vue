@@ -1,8 +1,8 @@
 /* Recommend 商品推荐 vue组件 */
 <template>
   <div class="recommend">
-    <h2>{{title}}</h2>
-    <ul>
+    <h2 v-if="title">{{title}}</h2>
+    <ul v-if="recommendList">
       <li
       v-for="(item, index) in recommendList"
       :key="index"

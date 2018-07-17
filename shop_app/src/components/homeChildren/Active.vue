@@ -30,6 +30,10 @@ export default {
   methods: {
     activeActive () {
       this.getActive()
+      this.$nextTick(() => {
+        console.log('created')
+        setTimeout(document.querySelector('html').scrollTo(0, 0), 10)
+      })
     },
     getActive () {
       this.$fetch('active').then((res) => {
