@@ -38,7 +38,9 @@ export default {
     this.recommendActive()
     this.$nextTick(() => {
       console.log('created')
-      setTimeout(document.querySelector('.shopList').scrollTo(0, 0), 10)
+      setTimeout(function () {
+        document.querySelector('.shopList').scrollTo(0, 0)
+      }, 10)
     })
   },
   activated () {
@@ -46,8 +48,8 @@ export default {
       console.log('activated' + this.scrollTop)
       setTimeout(function () {
         document.querySelector('.shopList').scrollTo(0, this.scrollTop)
-        console.log('setTimeout  activated')
-      }, 100)
+        console.log('setTimeout  activated' + this.scrollTop)
+      }.bind(this), 100)
     })
   },
   deactivated () {

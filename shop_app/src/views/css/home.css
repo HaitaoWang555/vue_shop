@@ -1,6 +1,5 @@
 .home {
   width: 100%;
-  padding-top: 94px;
 }
 /* header */
 header {
@@ -45,10 +44,11 @@ header {
 /* 内容区 */
 .shopList {
   position: relative;
-  min-height: 800px;
+  height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   margin-bottom: 52px;
+  margin-top: 94px;
 }
 .shop {
   position: absolute;

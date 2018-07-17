@@ -32,7 +32,7 @@ export default {
       this.getActive()
       this.$nextTick(() => {
         console.log('created')
-        setTimeout(document.querySelector('html').scrollTo(0, 0), 10)
+        setTimeout(document.querySelector('.shopList').scrollTo(0, 0), 10)
       })
     },
     getActive () {
