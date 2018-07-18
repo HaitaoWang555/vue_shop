@@ -137,7 +137,7 @@ export default {
         this.recommend = res.data.recommend
         this.isRecommend = true
       })).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
     },
     setallDec (data) {

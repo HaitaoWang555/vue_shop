@@ -71,7 +71,6 @@ export default {
         for (let index = 0; index < len; index++) {
           if (this.scrollTop >= this.offsetTop[index] && this.scrollTop < this.offsetTop[index + 1]) {
             bus.$emit('curIndex', index)
-            console.log(index)
             break
           }
         }

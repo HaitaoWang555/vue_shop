@@ -115,7 +115,7 @@ export default {
           this.$NProgress.done()
         }, 1000)
       }).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
     },
     onClick (index, title) {

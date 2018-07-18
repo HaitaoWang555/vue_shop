@@ -57,7 +57,7 @@ export default {
         this.categoryList = res.data.lists
         this.over()
       }).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
     }
   }

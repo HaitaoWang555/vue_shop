@@ -39,12 +39,12 @@ export default {
       this.$fetch('mobile').then((res) => {
         this.swiperImages = res.data.swiperImages
       }).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
       this.$fetch('recommendList').then((res) => {
         this.recommend = res.data.recommend
       }).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
     }
   }

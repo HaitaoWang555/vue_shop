@@ -35,8 +35,6 @@ export default {
   created () {
     this.recommendActive()
   },
-  activated () {
-  },
   methods: {
     recommendActive () {
       this.getRecommend()
@@ -46,12 +44,12 @@ export default {
         this.swiperImages = res.data.swiperImages
         this.tabList = res.data.tabList
       }).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
       this.$fetch('recommendList').then((res) => {
         this.recommend = res.data.recommend
       }).catch((err) => {
-        console.log(err)
+        console.error(err)
       })
     }
   }

@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     onClickMiniBtn () {
-      console.log('点击图标')
     },
     onClickBigBtn () {
       bus.$emit('isSkuShow', true)

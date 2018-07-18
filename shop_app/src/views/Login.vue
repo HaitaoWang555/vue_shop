@@ -138,7 +138,6 @@ export default {
       setTimeout(() => {
         this.loginLoading = false
         this.isClicked = true
-        console.log('登录成功')
       }, 1000)
     },
     submitForm () {
