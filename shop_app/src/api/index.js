@@ -1,7 +1,7 @@
 const host = 'http://pbdg9iawq.bkt.clouddn.com'
 
 const url = {
-  navList: '/json/navList',
+  navList: '/json/navLists',
   recommend: '/json/recommend',
   active: '/json/active',
   mobile: '/json/mobile',

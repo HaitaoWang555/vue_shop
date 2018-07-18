@@ -41,7 +41,7 @@
 <script>
 import Tabs from '@/components/Tabs.vue'
 import Loading from '@/components/Loading.vue'
-import Recommend from '@/components/homeChildren/Recommend.vue'
+import RecommendPage from '@/components/homeChildren/RecommendPage.vue'
 import Active from '@/components/homeChildren/Active.vue'
 import Intelligence from '@/components/homeChildren/Intelligence.vue'
 import Tv from '@/components/homeChildren/Tv.vue'
@@ -55,7 +55,7 @@ export default {
   components: {
     Loading,
     Tabs,
-    Recommend,
+    RecommendPage,
     Active,
     Intelligence,
     Tv,
