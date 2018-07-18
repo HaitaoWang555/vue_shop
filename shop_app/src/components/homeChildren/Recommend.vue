@@ -29,8 +29,7 @@ export default {
     return {
       swiperImages: null,
       tabList: null,
-      recommend: null,
-      scrollTimer: null
+      recommend: null
     }
   },
   created () {
@@ -41,18 +40,6 @@ export default {
   methods: {
     recommendActive () {
       this.getRecommend()
-    },
-    wrapScroll (e) {
-      document.querySelector('.shopList').addEventListener('scroll', this.scrollHandler)
-      console.log(1)
-    },
-    scrollHandler () {
-      clearTimeout(this.scrollTimer)
-      this.scrollTimer = setTimeout(() => {
-        console.log(1)
-        this.scrollTop = document.querySelector('.shopList').scrollTop
-        console.log(this.scrollTop)
-      }, 100)
     },
     getRecommend () {
       this.$fetch('recommend').then((res) => {
