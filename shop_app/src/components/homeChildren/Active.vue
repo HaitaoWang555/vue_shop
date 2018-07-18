@@ -6,22 +6,30 @@
     </header>
     <Tabbar :msg="tabList"/>
     <DividerLine bgColor="rgb(180, 53, 48)" />
+    <Recommend
+      v-if="recommend"
+      :title="recommend.title"
+      :recommendList="recommend.recommend_list"
+    />
   </div>
 </template>
 
 <script>
 import Tabbar from '@/components/Tabbar.vue'
 import DividerLine from '@/components/DividerLine.vue'
+import Recommend from '@/components/product/Recommend.vue'
 export default {
   name: 'active',
   components: {
     Tabbar,
-    DividerLine
+    DividerLine,
+    Recommend
   },
   data () {
     return {
       img: '',
-      tabList: null
+      tabList: null,
+      recommend: null
     }
   },
   created () {
@@ -35,6 +43,11 @@ export default {
       this.$fetch('active').then((res) => {
         this.img = res.data.img
         this.tabList = res.data.tabList
+      }).catch((err) => {
+        console.log(err)
+      })
+      this.$fetch('recommendList').then((res) => {
+        this.recommend = res.data.recommend
       }).catch((err) => {
         console.log(err)
       })
