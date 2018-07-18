@@ -85,6 +85,8 @@ export default {
         if (!vm.navList) {
           vm.$NProgress.start()
           vm.getNavList()
+        } else {
+          vm.$nextTick(document.querySelector('.shopList').scrollTo(0, vm.scrollTop[vm.curIndex].scrollTop))
         }
       })
     }
@@ -120,7 +122,6 @@ export default {
       this.curIndex = index
       setTimeout(() => {
         document.querySelector('.shopList').scrollTo(0, this.scrollTop[index].scrollTop)
-        console.log(this.scrollTop[this.curIndex].scrollTop)
         this.$NProgress.done()
       }, 100)
     },
@@ -131,7 +132,6 @@ export default {
       clearTimeout(this.scrollTimer)
       this.scrollTimer = setTimeout(() => {
         this.scrollTop[this.curIndex].scrollTop = document.querySelector('.shopList').scrollTop
-        console.log(this.scrollTop[this.curIndex].scrollTop)
       }, 100)
     }
   }
