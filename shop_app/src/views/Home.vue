@@ -28,7 +28,7 @@
         <keep-alive>
           <component
             v-bind:is="nav.templateName"
-            v-if="index == curIndex"
+            v-if="componentsShow[index]"
           >
           </component>
           </keep-alive>
@@ -70,7 +70,8 @@ export default {
       active: 0,
       curIndex: 0,
       transitionName: '',
-      scrollTop: null
+      scrollTop: null,
+      componentsShow: []
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -105,7 +106,9 @@ export default {
         let arr = []
         for (let i = 0; i < this.navList.length; i++) {
           arr.push({'scrollTop': 0})
+          this.componentsShow.push(false)
         }
+        this.componentsShow[this.active] = true
         this.scrollTop = JSON.parse(JSON.stringify(arr))
         setTimeout(() => {
           this.loading = false
@@ -117,8 +120,11 @@ export default {
     },
     onClick (index, title) {
       document.querySelector('.shopList').removeEventListener('scroll', this.scrollHandler)
-      this.$NProgress.start()
+      if (!this.componentsShow[index]) {
+        this.$NProgress.start()
+      }
       this.transitionName = index > this.curIndex ? 'page-left' : 'page-right'
+      this.componentsShow[index] = true
       this.curIndex = index
       setTimeout(() => {
         document.querySelector('.shopList').scrollTo(0, this.scrollTop[index].scrollTop)
