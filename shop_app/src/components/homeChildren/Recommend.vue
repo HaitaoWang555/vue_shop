@@ -1,6 +1,6 @@
 /* 推荐页vue组件 */
 <template>
-  <div class="recommendPage" @touchstart="wrapScroll">
+  <div class="recommendPage">
     <Swiper :msg="swiperImages"/>
     <Tabbar :msg="tabList"/>
     <DividerLine bgColor="rgb(245, 245, 245)" />
@@ -30,31 +30,13 @@ export default {
       swiperImages: null,
       tabList: null,
       recommend: null,
-      scrollTop: null,
       scrollTimer: null
     }
   },
   created () {
     this.recommendActive()
-    this.$nextTick(() => {
-      console.log('created')
-      setTimeout(function () {
-        document.querySelector('.shopList').scrollTo(0, 0)
-      }, 10)
-    })
   },
   activated () {
-    this.$nextTick(() => {
-      console.log('activated' + this.scrollTop)
-      setTimeout(function () {
-        document.querySelector('.shopList').scrollTo(0, this.scrollTop)
-        console.log('setTimeout  activated' + this.scrollTop)
-      }.bind(this), 100)
-    })
-  },
-  deactivated () {
-    console.log('deactivated' + this.scrollTop)
-    document.querySelector('.shopList').removeEventListener('scroll', this.scrollHandler)
   },
   methods: {
     recommendActive () {

@@ -16,13 +16,14 @@
         :onClick="onClick"
       />
       <!-- shoplist -->
-      <transition-group class="shopList" tag="div" :name="transitionName" >
+      <transition-group class="shopList" tag="div" :name="transitionName">
         <!-- shoplistContent -->
         <div
           v-for="(nav,index) in navList"
           :key="nav.page_id"
           v-show="index == curIndex"
           class="shop"
+          @touchstart="wrapScroll"
         >
         <keep-alive>
           <component
@@ -68,24 +69,42 @@ export default {
       navList: null,
       active: 0,
       curIndex: 0,
-      transitionName: ''
+      transitionName: '',
+      scrollTop: null
     }
   },
   beforeRouteEnter (to, from, next) {
-    next(bus.$emit('loading', false))
+    bus.$emit('loading', false)
+    if (!from.name) {
+      next((vm) => {
+        vm.$NProgress.start()
+        vm.getNavList()
+      })
+    } else {
+      next((vm) => {
+        if (!vm.navList) {
+          vm.$NProgress.start()
+          vm.getNavList()
+        }
+      })
+    }
   },
   created () {
-    this.$NProgress.start()
-    this.getNavList()
   },
   destroyed () {
     this.$NProgress.remove()
+    document.querySelector('.shopList').removeEventListener('scroll', this.scrollHandler)
   },
   methods: {
     getNavList () {
       this.$fetch('navList').then((res) => {
         this.navList = res.data.list
         this.moudle = res.data.list.templateName
+        let arr = []
+        for (let i = 0; i < this.navList.length; i++) {
+          arr.push({'scrollTop': 0})
+        }
+        this.scrollTop = JSON.parse(JSON.stringify(arr))
         setTimeout(() => {
           this.loading = false
           this.$NProgress.done()
@@ -95,12 +114,25 @@ export default {
       })
     },
     onClick (index, title) {
+      document.querySelector('.shopList').removeEventListener('scroll', this.scrollHandler)
       this.$NProgress.start()
       this.transitionName = index > this.curIndex ? 'page-left' : 'page-right'
+      this.curIndex = index
       setTimeout(() => {
-        this.curIndex = index
+        document.querySelector('.shopList').scrollTo(0, this.scrollTop[index].scrollTop)
+        console.log(this.scrollTop[this.curIndex].scrollTop)
         this.$NProgress.done()
-      }, 300)
+      }, 100)
+    },
+    wrapScroll () {
+      document.querySelector('.shopList').addEventListener('scroll', this.scrollHandler)
+    },
+    scrollHandler () {
+      clearTimeout(this.scrollTimer)
+      this.scrollTimer = setTimeout(() => {
+        this.scrollTop[this.curIndex].scrollTop = document.querySelector('.shopList').scrollTop
+        console.log(this.scrollTop[this.curIndex].scrollTop)
+      }, 100)
     }
   }
 }

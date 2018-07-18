@@ -1,5 +1,6 @@
 .home {
   width: 100%;
+  padding-top: 94px;
 }
 /* header */
 header {
@@ -48,7 +49,6 @@ header {
   overflow-x: hidden;
   overflow-y: scroll;
   margin-bottom: 52px;
-  margin-top: 94px;
 }
 .shop {
   position: absolute;
