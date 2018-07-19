@@ -95,6 +95,12 @@ export default {
 .isFooter {
   margin-top: 50px;
 }
+.recommend {
+  margin-bottom: 57px;
+}
+.van-cell-group {
+  margin-top: 56px;
+}
 .footer {
   position: fixed;
   bottom: 0;
