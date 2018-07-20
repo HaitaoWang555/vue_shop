@@ -11,6 +11,7 @@ const url = {
   tv: '/json/tv',
   category: '/json/category',
   product: '/json/product',
+  sku: '/json/sku',
   recommendList: '/json/recommendList'
 }
 

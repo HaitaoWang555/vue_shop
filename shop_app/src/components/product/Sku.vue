@@ -1,7 +1,7 @@
 /* Sku vue组件 */
 <template>
   <van-popup v-model="isSkuShow" position="bottom" >
-    <div class="skuWrap">
+    <div class="skuWrap" v-if="selectedGood">
       <van-icon name="close" class="close"  @click="close"/>
       <div class="goods">
         <div class="imgWrap"><img :src="selectedGood.img_url"></div>
@@ -47,7 +47,6 @@
 <script>
 import Vue from 'vue'
 import SkuServe from '@/components/product/SkuServe.vue'
-import { goodsId, buyOption, goodsInfo } from '@/components/product/sku.js'
 import { Stepper, Popup } from 'vant'
 import bus from '@/bus.js'
 Vue.use(Popup).use(Stepper)
@@ -60,23 +59,23 @@ export default {
     return {
       isSkuShow: false,
       goodsNum: 1,
-      goodsId,
+      goodsId: null,
       selectedGood: null,
       selectedSKU: [],
-      buyOption,
-      goodsInfo
+      buyOption: null,
+      goodsInfo: null
     }
   },
   created () {
     bus.$on('isSkuShow', (val) => {
       this.isSkuShow = val
     })
-    this.initData()
+    this.getSku()
   },
   methods: {
     initData () {
       this.selectedGood = this.goodsInfo.find(item => {
-        return item.goods_id === goodsId
+        return item.goods_id === this.goodsId
       })
       this.selectedSKU = JSON.parse(JSON.stringify(this.selectedGood.prop_list))
       this.buyOption.forEach((item, i) => {
@@ -86,6 +85,14 @@ export default {
             list.isOn = true
           }
         })
+      })
+    },
+    getSku () {
+      this.$fetch('sku').then((res) => {
+        this.goodsId = res.data.goodsId
+        this.buyOption = JSON.parse(JSON.stringify(res.data.buyOption))
+        this.goodsInfo = JSON.parse(JSON.stringify(res.data.goodsInfo))
+        this.initData()
       })
     },
     close () {
