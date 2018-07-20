@@ -12,6 +12,7 @@ const url = {
   category: '/json/category',
   product: '/json/product',
   sku: '/json/sku',
+  area: '/json/area',
   recommendList: '/json/recommendList'
 }
 
