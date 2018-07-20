@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const Home = () => import('./views/Home.vue')
-const Login = () => import('./views/Login.vue')
-const Category = () => import('./views/Category.vue')
-const Cart = () => import('./views/Cart.vue')
-const User = () => import('./views/User.vue')
-const Product = () => import('./views/Product.vue')
+
+import Home from './views/Home.vue'
+import Login from './views/Login.vue'
+import Category from './views/Category.vue'
+import Cart from './views/Cart.vue'
+import User from './views/User.vue'
+import Product from './views/Product.vue'
 
 Vue.use(Router)
 
@@ -13,7 +14,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: 'home'
+      redirect: '/home'
     },
     {
       path: '/home',
