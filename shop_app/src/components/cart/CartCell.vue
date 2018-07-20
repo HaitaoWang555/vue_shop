@@ -1,6 +1,6 @@
 /* cartCell vue组件 */
 <template>
-  <div class="cartCell">
+  <div class="cartCell" v-if="productList">
     <ol>
       <li
         v-for="(item, index) in productList"
@@ -108,18 +108,14 @@
 <script>
 import Vue from 'vue'
 import { Stepper, Checkbox, Popup } from 'vant'
-import { productList } from '@/views/cart.js'
 import SkuServe from '@/components/product/SkuServe.vue'
 import bus from '@/bus.js'
 
 Vue.use(Stepper).use(Checkbox).use(Popup)
 export default {
   name: 'cartCell',
-  props: {
-
-  },
   created () {
-    this.initData()
+    this.getProduct()
     bus.$on('choose', (val) => {
       this.choose = val
     })
@@ -167,8 +163,13 @@ export default {
     }
   },
   methods: {
+    getProduct () {
+      this.$fetch('cart').then((res) => {
+        this.productList = JSON.parse(JSON.stringify(res.data.productList))
+        this.initData()
+      })
+    },
     initData () {
-      this.productList = productList
       for (let i = 0; i < this.productList.length; i++) {
         this.isServe.push({is_checked: false})
       }

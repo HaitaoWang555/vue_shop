@@ -13,6 +13,7 @@ const url = {
   product: '/json/product',
   sku: '/json/sku',
   area: '/json/area',
+  cart: '/json/cart',
   recommendList: '/json/recommendList'
 }
 
