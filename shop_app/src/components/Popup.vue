@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { Popup } from 'vant'
 import bus from '@/bus.js'
-Vue.use(Popup)
 export default {
   name: 'Popup',
   props: {
@@ -38,7 +36,7 @@ export default {
     })
   },
   components: {
-
+    [Popup.name]: Popup
   },
   methods: {
     close () {

@@ -26,20 +26,18 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Loading from '@/components/Loading.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import CartCell from '@/components/cart/CartCell.vue'
 import Recommend from '@/components/product/Recommend.vue'
-import { Cell, CellGroup, Stepper, Popup } from 'vant'
+import { Cell, CellGroup } from 'vant'
 import bus from '@/bus.js'
-
-Vue.use(Cell).use(CellGroup)
-Vue.use(Popup).use(Stepper)
 
 export default {
   name: 'cart',
   components: {
+    [Cell.name]: Cell,
+    [CellGroup.name]: CellGroup,
     Loading,
     AppHeader,
     CartCell,

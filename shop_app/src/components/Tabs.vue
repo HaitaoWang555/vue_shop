@@ -14,11 +14,13 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { Tab, Tabs } from 'vant'
-Vue.use(Tab).use(Tabs)
 export default {
   name: 'Tabs',
+  components: {
+    [Tab.name]: Tab,
+    [Tabs.name]: Tabs
+  },
   props: {
     navList: {
       navList: null

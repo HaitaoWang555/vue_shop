@@ -10,11 +10,13 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { Swipe, SwipeItem } from 'vant'
-Vue.use(Swipe).use(SwipeItem)
 export default {
   name: 'swiper',
+  components: {
+    [Swipe.name]: Swipe,
+    [SwipeItem.name]: SwipeItem
+  },
   props: {
     msg: {
       swiperImages: null

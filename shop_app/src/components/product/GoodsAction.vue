@@ -13,11 +13,7 @@ import {
   GoodsActionBigBtn,
   GoodsActionMiniBtn
 } from 'vant'
-import Vue from 'vue'
 import bus from '@/bus.js'
-Vue.use(GoodsAction)
-  .use(GoodsActionBigBtn)
-  .use(GoodsActionMiniBtn)
 export default {
   name: 'GoodsAction',
   props: {
@@ -27,7 +23,9 @@ export default {
 
   },
   components: {
-
+    [GoodsAction.name]: GoodsAction,
+    [GoodsActionBigBtn.name]: GoodsActionBigBtn,
+    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn
   },
   methods: {
     onClickMiniBtn () {

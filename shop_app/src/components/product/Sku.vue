@@ -45,14 +45,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import SkuServe from '@/components/product/SkuServe.vue'
 import { Stepper, Popup } from 'vant'
 import bus from '@/bus.js'
-Vue.use(Popup).use(Stepper)
 export default {
   name: 'sku',
   components: {
+    [Stepper.name]: Stepper,
+    [Popup.name]: Popup,
     SkuServe
   },
   data () {

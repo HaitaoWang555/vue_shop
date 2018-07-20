@@ -19,11 +19,13 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { Tab, Tabs } from 'vant'
-Vue.use(Tab).use(Tabs)
 export default {
   name: 'description',
+  components: {
+    [Tab.name]: Tab,
+    [Tabs.name]: Tabs
+  },
   props: {
     allDec: {
       default: null

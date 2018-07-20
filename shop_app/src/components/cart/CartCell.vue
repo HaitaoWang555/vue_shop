@@ -106,12 +106,10 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { Stepper, Checkbox, Popup } from 'vant'
 import SkuServe from '@/components/product/SkuServe.vue'
 import bus from '@/bus.js'
 
-Vue.use(Stepper).use(Checkbox).use(Popup)
 export default {
   name: 'cartCell',
   created () {
@@ -121,6 +119,9 @@ export default {
     })
   },
   components: {
+    [Stepper.name]: Stepper,
+    [Checkbox.name]: Checkbox,
+    [Popup.name]: Popup,
     SkuServe
   },
   data () {

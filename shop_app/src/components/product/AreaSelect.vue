@@ -8,13 +8,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { Area, Popup } from 'vant'
 import bus from '@/bus.js'
-Vue.use(Popup)
-Vue.use(Area)
 export default {
   name: 'AreaSelect',
+  components: {
+    [Popup.name]: Popup,
+    [Area.name]: Area
+  },
   data () {
     return {
       areaList: null,
