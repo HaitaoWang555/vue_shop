@@ -42,7 +42,7 @@ export default {
   data () {
     return {
       navList,
-      loading: true
+      loading: false
     }
   },
   created () {
