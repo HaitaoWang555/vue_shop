@@ -170,6 +170,7 @@ export default {
 .skuContent {
   max-height: 312.5px;
   overflow-y: scroll;
+  padding-bottom: 57px;
 }
 .version {
   text-align: left;
