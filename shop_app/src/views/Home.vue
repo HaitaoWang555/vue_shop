@@ -76,18 +76,20 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     bus.$emit('loading', false)
-    if (!from.name) {
+    if (!from.name) { // 刷新和直接进入home 页
       next((vm) => {
         vm.$NProgress.start()
         vm.getNavList()
       })
-    } else {
+    } else { // 路由 进入 home 页
       next((vm) => {
-        if (!vm.navList) {
+        if (!vm.navList) { // 没获取过首页数据
           vm.$NProgress.start()
           vm.getNavList()
-        } else {
-          vm.$nextTick(document.querySelector('.shopList').scrollTo(0, vm.scrollTop[vm.curIndex].scrollTop))
+        } else { // 获取过首页数据 跳转到之前位置
+          vm.$nextTick(() => {
+            document.querySelector('.shopList').scrollTop = vm.scrollTop[vm.curIndex].scrollTop
+          })
         }
       })
     }
@@ -127,7 +129,7 @@ export default {
       this.componentsShow[index] = true
       this.curIndex = index
       setTimeout(() => {
-        document.querySelector('.shopList').scrollTo(0, this.scrollTop[index].scrollTop)
+        document.querySelector('.shopList').scrollTop = this.scrollTop[index].scrollTop
         this.$NProgress.done()
       }, 100)
     },
