@@ -5,6 +5,7 @@
   right: 0;
   width: 85%;
   margin: 0 auto;
+  margin-bottom: 52px;
 }
 header {
   padding: 30px 0 10px;
@@ -68,6 +69,7 @@ section {
   width: 100%;
   display: block;
   transition: width 1s;
+  background-color: transparent;
 }
 .forPassword {
   display: flex;
