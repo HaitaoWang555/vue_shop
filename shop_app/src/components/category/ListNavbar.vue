@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import bus from '@/bus.js'
 export default {
   name: 'listNavbar',
   props: {
@@ -26,28 +25,30 @@ export default {
   },
   data () {
     return {
-      curIndex: 0,
-      offsetTop: null,
-      scrollHandler: null
     }
   },
   created () {
-    bus.$on('offsetTop', (val) => {
-      this.offsetTop = val
-    })
-    bus.$on('curIndex', (val) => {
-      this.curIndex = val
-    })
-    bus.$on('scrollHandler', (val) => {
-      this.scrollHandler = val
-    })
+  },
+  computed: {
+    curIndex () {
+      return this.$store.getters.getCurIndex
+    },
+    offsetTop () {
+      return this.$store.getters.getOffsetTop
+    },
+    scrollHandler () {
+      return this.$store.getters.getScrollHandler
+    },
+    scrollTop () {
+      return this.$store.getters.getScrollTop
+    }
   },
   methods: {
     changeIndex (index) {
-      this.curIndex = index
+      this.$store.commit('setCurIndex', index)
       document.querySelector('.listWrap').removeEventListener('scroll', this.scrollHandler)
       document.querySelector('.listWrap').scrollTop = this.offsetTop[index]
-      bus.$emit('scrollTop', this.offsetTop[index])
+      this.$store.commit('setScrollTop', this.offsetTop[index])
     }
   }
 }

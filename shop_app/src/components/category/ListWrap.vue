@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import bus from '@/bus.js'
 import CategoryGroup from '@/components/category/CategoryGroup.vue'
 export default {
   name: 'listWrap',
@@ -36,8 +35,7 @@ export default {
   data () {
     return {
       offsetTop: [],
-      scrollTimer: null,
-      scrollTop: 0
+      scrollTimer: null
     }
   },
   components: {
@@ -48,12 +46,14 @@ export default {
       this.categoryList.forEach((item, index) => {
         this.offsetTop.push(this.$refs['category' + index][0].offsetTop)
       })
-      bus.$emit('offsetTop', this.offsetTop)
-      bus.$emit('scrollHandler', this.scrollHandler)
-      bus.$on('scrollTop', (val) => {
-        this.scrollTop = val
-      })
+      this.$store.commit('setOffsetTop', this.offsetTop)
+      this.$store.commit('setScrollHandler', this.scrollHandler)
     })
+  },
+  computed: {
+    scrollTop () {
+      return this.$store.getters.getScrollTop
+    }
   },
   activated () {
     document.querySelector('.listWrap').scrollTo(0, this.scrollTop)
@@ -65,12 +65,12 @@ export default {
     scrollHandler () {
       clearTimeout(this.scrollTimer)
       this.scrollTimer = setTimeout(() => {
-        this.scrollTop = document.querySelector('.listWrap').scrollTop
-        bus.$emit('scrollTop', this.scrollTop)
+        let top = document.querySelector('.listWrap').scrollTop
+        this.$store.commit('setScrollTop', top)
         let len = this.offsetTop.length
         for (let index = 0; index < len; index++) {
-          if (this.scrollTop >= this.offsetTop[index] && this.scrollTop < this.offsetTop[index + 1]) {
-            bus.$emit('curIndex', index)
+          if (top >= this.offsetTop[index] && top < this.offsetTop[index + 1]) {
+            this.$store.commit('setCurIndex', index)
             break
           }
         }
