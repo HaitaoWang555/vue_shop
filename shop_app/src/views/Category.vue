@@ -16,7 +16,6 @@ import Loading from '@/components/Loading.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import ListNavbar from '@/components/category/ListNavbar.vue'
 import ListWrap from '@/components/category/ListWrap.vue'
-import bus from '@/bus.js'
 export default {
   name: 'category',
   components: {
@@ -32,7 +31,6 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    bus.$emit('loading', false)
     next(vm => {
       if (vm.loading) {
         vm.getCategory()
@@ -56,6 +54,7 @@ export default {
       this.$fetch('category').then((res) => {
         this.categoryList = res.data.lists
         this.over()
+        this.$store.commit('setFooterView', true)
       }).catch((err) => {
         console.error(err)
       })

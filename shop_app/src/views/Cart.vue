@@ -52,7 +52,11 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    next(bus.$emit('loading', true))
+    next(vm => {
+      if (from.name) {
+        vm.$store.commit('setFooterView', true)
+      }
+    })
   },
   created () {
     this.$NProgress.start()
@@ -73,6 +77,7 @@ export default {
         this.recommend = res.data.recommend
         this.$NProgress.done()
         this.loading = false
+        this.$store.commit('setFooterView', true)
       }).catch((err) => {
         console.log(err)
       })

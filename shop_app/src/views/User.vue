@@ -29,15 +29,11 @@
 </template>
 
 <script>
-import bus from '@/bus.js'
 import DividerLine from '@/components/DividerLine.vue'
 export default {
   name: 'user',
   components: {
     DividerLine
-  },
-  beforeRouteEnter (to, from, next) {
-    next(bus.$emit('loading', false))
   },
   created () {
     this.$NProgress.start()
@@ -50,6 +46,7 @@ export default {
     over () {
       setTimeout(() => {
         this.$NProgress.done()
+        this.$store.commit('setFooterView', true)
       }, 1000)
     }
   }

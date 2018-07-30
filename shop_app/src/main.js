@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './store/index.js'
 import 'normalize.css'
 import './assets/css/reset.css'
 import './assets/fonts/iconfont.css'
@@ -24,6 +24,9 @@ router.beforeEach((to, from, next) => {
   document.querySelector('#app').scrollTop = 0
   if (to.name) {
     document.title = to.meta.title
+  }
+  if (from.name) {
+    store.commit('setFooterView', true)
   }
   next()
 })

@@ -48,7 +48,6 @@ import Tv from '@/components/homeChildren/Tv.vue'
 import Computer from '@/components/homeChildren/Computer.vue'
 import Mobile from '@/components/homeChildren/Mobile.vue'
 import Around from '@/components/homeChildren/Around.vue'
-import bus from '@/bus.js'
 
 export default {
   name: 'home',
@@ -75,7 +74,6 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    bus.$emit('loading', false)
     if (!from.name) { // 刷新和直接进入home 页
       next((vm) => {
         vm.$NProgress.start()
@@ -114,6 +112,7 @@ export default {
         this.scrollTop = JSON.parse(JSON.stringify(arr))
         setTimeout(() => {
           this.loading = false
+          this.$store.commit('setFooterView', true)
           this.$NProgress.done()
         }, 1000)
       }).catch((err) => {

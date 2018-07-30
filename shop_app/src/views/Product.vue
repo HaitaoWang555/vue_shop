@@ -110,7 +110,9 @@ export default {
     GoodsAction
   },
   beforeRouteEnter (to, from, next) {
-    next(bus.$emit('loading', true))
+    next(vm => {
+      vm.$store.commit('setFooterView', false)
+    })
   },
   created () {
     this.$NProgress.start()
