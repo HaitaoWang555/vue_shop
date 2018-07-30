@@ -11,13 +11,11 @@
 </template>
 
 <script>
-import bus from '@/bus.js'
 export default {
   name: 'ProductHeader',
   methods: {
     goback () {
       this.$router.go(-1)
-      bus.$emit('loading', false)
     }
   }
 }
