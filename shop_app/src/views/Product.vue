@@ -72,7 +72,6 @@ import Popup from '@/components/Popup.vue'
 import Sku from '@/components/product/Sku.vue'
 import AreaSelect from '@/components/product/AreaSelect.vue'
 import GoodsAction from '@/components/product/GoodsAction.vue'
-import bus from '@/bus.js'
 export default {
   name: 'product',
   data () {
@@ -123,6 +122,43 @@ export default {
   destroyed () {
     this.$NProgress.remove()
   },
+  computed: {
+    changeProduct () {
+      return this.$store.getters.changeProduct
+    },
+    changeGoodsView () {
+      return this.$store.getters.changeGoodsView
+    },
+    confirm () {
+      return this.$store.getters.confirm
+    }
+  },
+  watch: {
+    changeProduct: {
+      handler (val) {
+        let good = this.goodsCell.find(item => {
+          return item.title === '已选'
+        })
+        good.value.content = val
+      }
+    },
+    changeGoodsView: {
+      handler (val) {
+        this.goodsview.goodsPrice = val
+      }
+    },
+    confirm: {
+      handler (val) {
+        let good = this.goodsCell.find(item => {
+          return item.title === '送至'
+        })
+        good.value.content = ''
+        val.forEach((item) => {
+          good.value.content += (item.name + ' ')
+        })
+      }
+    }
+  },
   methods: {
     getProduct () {
       this.$fetch('product').then((res) => {
@@ -158,25 +194,13 @@ export default {
         this.popupTitle = title
         this.popupContent = content
         this.popupTag = tag
-        bus.$emit('isPopupShow', true)
+        this.$store.commit('isPopupShow', true)
       }
       if (to === 'sku') {
-        bus.$emit('isSkuShow', true)
-        bus.$on('changeProduct', (val) => {
-          this.goodsCell[index].value.content = val
-        })
-        bus.$on('changeGoodsView', (val) => {
-          this.goodsview.goodsPrice = val
-        })
+        this.$store.commit('isSkuShow', true)
       }
       if (to === 'area') {
-        bus.$emit('isAreaShow', true)
-        bus.$on('confirm', (val) => {
-          this.goodsCell[index].value.content = ''
-          val.forEach((item) => {
-            this.goodsCell[index].value.content += (item.name + ' ')
-          })
-        })
+        this.$store.commit('isAreaShow', true)
       }
     }
   }

@@ -13,7 +13,6 @@ import {
   GoodsActionBigBtn,
   GoodsActionMiniBtn
 } from 'vant'
-import bus from '@/bus.js'
 export default {
   name: 'GoodsAction',
   props: {
@@ -31,7 +30,7 @@ export default {
     onClickMiniBtn () {
     },
     onClickBigBtn () {
-      bus.$emit('isSkuShow', true)
+      this.$store.commit('isSkuShow', true)
     }
   }
 }

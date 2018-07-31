@@ -1,6 +1,6 @@
 /* Popup 弹出框 vue组件 */
 <template>
-  <van-popup v-model="isPopupShow" position="bottom" >
+  <van-popup v-model="isPopupShow" position="bottom" :close-on-click-overlay="false">
     <div class="popup">
       <van-icon name="close" @click="close"/>
       <h2 v-if="title">{{title}}</h2>
@@ -11,7 +11,6 @@
 
 <script>
 import { Popup } from 'vant'
-import bus from '@/bus.js'
 export default {
   name: 'Popup',
   props: {
@@ -30,17 +29,25 @@ export default {
       isPopupShow: false
     }
   },
-  created () {
-    bus.$on('isPopupShow', (val) => {
-      this.isPopupShow = val
-    })
+  computed: {
+    show () {
+      return this.$store.getters.isPopupShow
+    }
+  },
+  watch: {
+    show: {
+      deep: true,
+      handler (val) {
+        this.isPopupShow = val
+      }
+    }
   },
   components: {
     [Popup.name]: Popup
   },
   methods: {
     close () {
-      this.isPopupShow = false
+      this.$store.commit('isPopupShow', false)
     }
   }
 }

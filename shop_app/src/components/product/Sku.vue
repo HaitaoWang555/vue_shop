@@ -1,6 +1,6 @@
 /* Sku vue组件 */
 <template>
-  <van-popup v-model="isSkuShow" position="bottom" >
+  <van-popup v-model="isSkuShow" position="bottom" :close-on-click-overlay="false">
     <div class="skuWrap" v-if="selectedGood">
       <van-icon name="close" class="close"  @click="close"/>
       <div class="goods">
@@ -47,7 +47,6 @@
 <script>
 import SkuServe from '@/components/product/SkuServe.vue'
 import { Stepper, Popup } from 'vant'
-import bus from '@/bus.js'
 export default {
   name: 'sku',
   components: {
@@ -57,9 +56,9 @@ export default {
   },
   data () {
     return {
-      isSkuShow: false,
       goodsNum: 1,
       goodsId: null,
+      isSkuShow: false,
       selectedGood: null,
       selectedSKU: [],
       buyOption: null,
@@ -67,10 +66,20 @@ export default {
     }
   },
   created () {
-    bus.$on('isSkuShow', (val) => {
-      this.isSkuShow = val
-    })
     this.getSku()
+  },
+  computed: {
+    show () {
+      return this.$store.getters.isSkuShow
+    }
+  },
+  watch: {
+    show: {
+      deep: true,
+      handler (val) {
+        this.isSkuShow = val
+      }
+    }
   },
   methods: {
     initData () {
@@ -96,7 +105,7 @@ export default {
       })
     },
     close () {
-      this.isSkuShow = false
+      this.$store.commit('isSkuShow', false)
     },
     changeChoose (buyOption, index) {
       let curSKUIndex = this.selectedSKU.findIndex(item => {
@@ -120,9 +129,9 @@ export default {
     },
     addCart (name, goodsNum, price) {
       let Product = name + goodsNum
-      bus.$emit('changeProduct', Product)
-      bus.$emit('changeGoodsView', price)
-      this.isSkuShow = false
+      this.$store.commit('changeProduct', Product)
+      this.$store.commit('changeGoodsView', price)
+      this.$store.commit('isSkuShow', false)
     }
   }
 }

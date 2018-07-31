@@ -9,7 +9,6 @@
 
 <script>
 import { Area, Popup } from 'vant'
-import bus from '@/bus.js'
 export default {
   name: 'AreaSelect',
   components: {
@@ -23,10 +22,20 @@ export default {
     }
   },
   created () {
-    bus.$on('isAreaShow', (val) => {
-      this.isAreaShow = val
-    })
     this.initData()
+  },
+  computed: {
+    show () {
+      return this.$store.getters.isAreaShow
+    }
+  },
+  watch: {
+    show: {
+      deep: true,
+      handler (val) {
+        this.isAreaShow = val
+      }
+    }
   },
   methods: {
     initData () {
@@ -35,11 +44,11 @@ export default {
       })
     },
     confirm ($event) {
-      bus.$emit('confirm', $event)
-      this.isAreaShow = false
+      this.$store.commit('confirm', $event)
+      this.$store.commit('isAreaShow', false)
     },
     cancel () {
-      this.isAreaShow = false
+      this.$store.commit('isAreaShow', false)
     }
   }
 }
