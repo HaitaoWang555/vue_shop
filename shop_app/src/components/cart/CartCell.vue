@@ -108,15 +108,11 @@
 <script>
 import { Stepper, Checkbox, Popup } from 'vant'
 import SkuServe from '@/components/product/SkuServe.vue'
-import bus from '@/bus.js'
 
 export default {
   name: 'cartCell',
   created () {
     this.getProduct()
-    bus.$on('choose', (val) => {
-      this.choose = val
-    })
   },
   components: {
     [Stepper.name]: Stepper,
@@ -129,11 +125,15 @@ export default {
       productList: null,
       isPopupShow: false,
       thisServe: [],
-      choose: false,
       isServe: [],
       curIndex: null,
       totalNum: 0,
       totalPrice: 0
+    }
+  },
+  computed: {
+    choose () {
+      return this.$store.getters.getServeChoose
     }
   },
   watch: {
@@ -158,8 +158,8 @@ export default {
         })
         this.totalNum = productNum
         this.totalPrice = productPrice
-        bus.$emit('productNum', this.totalNum)
-        bus.$emit('productPrice', this.totalPrice)
+        this.$store.commit('setProductNum', this.totalNum)
+        this.$store.commit('setProductPrice', this.totalPrice)
       }
     }
   },
@@ -187,8 +187,10 @@ export default {
     },
     showServeProduct () {
       this.isPopupShow = false
-      this.isServe[this.curIndex].is_checked = true
-      this.productList[this.curIndex].serveNum = 1
+      if (this.choose) {
+        this.isServe[this.curIndex].is_checked = true
+        this.productList[this.curIndex].serveNum = 1
+      }
     },
     hideServeProduct (index) {
       this.isServe[index].is_checked = false

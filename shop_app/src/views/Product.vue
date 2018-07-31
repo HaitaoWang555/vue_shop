@@ -111,7 +111,9 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
-      vm.$store.commit('setFooterView', false)
+      if (vm.pruductData) {
+        vm.$store.commit('setFooterView', false)
+      }
     })
   },
   created () {
@@ -135,6 +137,7 @@ export default {
         this.goodsCommentList = this.pruductData.goodsComment.list[0]
         this.loading = false
         this.$NProgress.done()
+        this.$store.commit('setFooterView', false)
       }).then(this.$fetch('recommendList').then((res) => {
         this.recommend = res.data.recommend
         this.isRecommend = true

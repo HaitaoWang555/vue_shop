@@ -31,7 +31,6 @@ import AppHeader from '@/components/AppHeader.vue'
 import CartCell from '@/components/cart/CartCell.vue'
 import Recommend from '@/components/product/Recommend.vue'
 import { Cell, CellGroup } from 'vant'
-import bus from '@/bus.js'
 
 export default {
   name: 'cart',
@@ -46,27 +45,25 @@ export default {
   data () {
     return {
       loading: true,
-      recommend: null,
-      productNum: 0,
-      productPrice: 0
+      recommend: null
     }
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
-      if (from.name) {
-        vm.$store.commit('setFooterView', true)
-      }
+      vm.$store.commit('setFooterView', false)
     })
   },
   created () {
     this.$NProgress.start()
     this.getCart()
-    bus.$on('productNum', (val) => {
-      this.productNum = val
-    })
-    bus.$on('productPrice', (val) => {
-      this.productPrice = val
-    })
+  },
+  computed: {
+    productNum () {
+      return this.$store.getters.getProductNum
+    },
+    productPrice () {
+      return this.$store.getters.getProductPrice
+    }
   },
   destroyed () {
     this.$NProgress.remove()
@@ -77,7 +74,6 @@ export default {
         this.recommend = res.data.recommend
         this.$NProgress.done()
         this.loading = false
-        this.$store.commit('setFooterView', true)
       }).catch((err) => {
         console.log(err)
       })

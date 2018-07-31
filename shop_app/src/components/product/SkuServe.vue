@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import bus from '@/bus.js'
 export default {
   name: 'skuServe',
   props: {
@@ -54,13 +53,10 @@ export default {
       choose: false
     }
   },
-  components: {
-
-  },
   methods: {
     readServe () {
       this.choose = !this.choose
-      bus.$emit('choose', this.choose)
+      this.$store.commit('setServeChoose', this.choose)
     }
   }
 }
