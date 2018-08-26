@@ -16,14 +16,14 @@ export default {
     }
   },
   mutations: {
-    setProductNum(state, value) {
+    setProductNum (state, value) {
       state.productNum = value
     },
-    setProductPrice(state, value) {
+    setProductPrice (state, value) {
       state.productPrice = value
     },
-    setServeChoose(state, value) {
+    setServeChoose (state, value) {
       state.serveChoose = value
-    },
+    }
   }
 }

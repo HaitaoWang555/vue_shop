@@ -28,22 +28,22 @@ export default {
     }
   },
   mutations: {
-    isPopupShow(state, value) {
+    isPopupShow (state, value) {
       state.isPopupShow = value
     },
-    isSkuShow(state, value) {
+    isSkuShow (state, value) {
       state.isSkuShow = value
     },
-    isAreaShow(state, value) {
+    isAreaShow (state, value) {
       state.isAreaShow = value
     },
-    changeProduct(state, value) {
+    changeProduct (state, value) {
       state.changeProduct = value
     },
-    changeGoodsView(state, value) {
+    changeGoodsView (state, value) {
       state.changeGoodsView = value
     },
-    confirm(state, value) {
+    confirm (state, value) {
       state.confirm = value
     }
   }

@@ -20,16 +20,16 @@ export default {
     }
   },
   mutations: {
-    setCurIndex(state, value) {
+    setCurIndex (state, value) {
       state.curIndex = value
     },
-    setScrollTop(state, value) {
+    setScrollTop (state, value) {
       state.scrollTop = value
     },
-    setOffsetTop(state, value) {
+    setOffsetTop (state, value) {
       state.offsetTop = value
     },
-    setScrollHandler(state, value) {
+    setScrollHandler (state, value) {
       state.scrollHandler = value
     }
   }

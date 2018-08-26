@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import footerView from "./modules/footerView"
-import category from "./modules/category"
-import cart from "./modules/cart"
-import product from "./modules/product"
+import footerView from './modules/footerView'
+import category from './modules/category'
+import cart from './modules/cart'
+import product from './modules/product'
 
 Vue.use(Vuex)
 

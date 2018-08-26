@@ -8,7 +8,7 @@ export default {
     }
   },
   mutations: {
-    setFooterView(state, value) {
+    setFooterView (state, value) {
       state.footerView = value
     }
   }
